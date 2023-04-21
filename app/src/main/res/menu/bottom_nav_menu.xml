@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_bedroom_baby_24"/>
+    <item android:title="fau"
+        android:id="@+id/fau"
+        android:icon="@drawable/ic_baseline_3p_24"/>
+    <item android:title="gopasjgo"
+        android:icon="@drawable/ic_android_black_24dp"
+        android:id="@+id/gop"/>
+</menu>
