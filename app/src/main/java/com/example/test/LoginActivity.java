@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         Regist.setOnClickListener(view ->{
           startActivity(new Intent(this,RegisterActivity.class));
         });
-        //TODO Сброс пароля
         respass.setOnClickListener(view ->{
             String email = email_input.getText().toString();
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -67,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         signin.setOnClickListener(view ->{
             loginUser();
         });
-        //TODO показ\скрытие пароля
+
         show_password.setOnClickListener(view ->{
             ShowPasswordVisible();
         });
@@ -75,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser(){
         String email = email_input.getText().toString();
         String password = password_input.getText().toString();
-        //TODO Сделать проверку на валидность почты
         if(TextUtils.isEmpty(email)){
             email_input.setError("Неверный формат почты");
             email_input.requestFocus();

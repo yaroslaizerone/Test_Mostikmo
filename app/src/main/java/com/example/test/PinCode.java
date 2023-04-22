@@ -1,5 +1,8 @@
 package com.example.test;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,13 +11,28 @@ import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.Filter;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.ktx.Firebase;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class PinCode extends AppCompatActivity {
 
@@ -25,6 +43,7 @@ public class PinCode extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
+    ArrayList<Type> mArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +136,26 @@ public class PinCode extends AppCompatActivity {
                 break;
         }
     }
-    //TODO Сделать проверку ввода пароля
-    void Cheakpincode (){
-
-        startActivity(new Intent(this,MainActivity.class));
+    //TODO Сделать проверку ввода пинкода и так ЧТОБЫ МОЖНО БЫЛО УЙТИ С ЭКРАНА ЕСЛИ НЕ ТВОЙ АККАУНТ
+    //TODO СДЕЛАТЬ СБРОС ПИНКОДА
+    void Cheakpincode(){
+        CollectionReference pinRef = db.collection("pin");
+        pinRef.whereEqualTo("email", user.getEmail()).whereEqualTo("pincode", pincode).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                startActivity(new Intent(PinCode.this,MainActivity.class));
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        //startActivity(new Intent(PinCode.this,MainActivity.class));
     }
-    //TODO Сделать проверку на экране с пинкодом
     @Override
     protected void onStart() {
         super.onStart();
@@ -131,7 +164,7 @@ public class PinCode extends AppCompatActivity {
             startActivity(new Intent(PinCode.this, LoginActivity.class));
         }else{
             Log.i("User",user.getEmail());
-            startActivity(new Intent(PinCode.this, MainActivity.class));
+            //startActivity(new Intent(PinCode.this, MainActivity.class));
         }
     }
 }

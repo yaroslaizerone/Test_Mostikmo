@@ -128,7 +128,7 @@ public class CreatePinCode extends AppCompatActivity {
     }
 
     void createpincode (){
-
+        //TODO СДЕЛАТЬ ПРОВЕРКУ НА НАЛИЧИЕ У ДАННОГО ПОЛЬЗОВАТЕЛЯ ПИНКОДА И ЕСЛИ ЕСТЬ ТО ОБНОВЛЯТЬ ЕГО
         Map<String, Object> picodeuser = new HashMap<>();
         picodeuser.put("email", user.getEmail());
         picodeuser.put("pincode", pincode);
