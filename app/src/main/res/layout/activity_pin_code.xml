@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PinCode">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Mosticsmo"
+        android:layout_marginTop="30dp"
+        android:textColor="#6E6EFF"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <ImageView
+            android:id="@+id/point1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/roundbutton"/>
+        <ImageView
+            android:id="@+id/point2"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/roundbutton"/>
+        <ImageView
+            android:id="@+id/point3"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/roundbutton"/>
+        <ImageView
+            android:id="@+id/point4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/roundbutton"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="Введите PIN-код"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <TextView
+            android:id="@+id/num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="2"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="3"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/num4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="5"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="6"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/num7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="7"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="8"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center"
+            android:text="9"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <ImageButton
+            android:id="@+id/clearpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:background="@drawable/clearsymbol" />
+
+        <TextView
+            android:id="@+id/num0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="78dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="48dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/acceptinput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:background="@drawable/inpytinsystem" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Сбросить pin-code"
+        android:textColor="#6E6EFF"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
