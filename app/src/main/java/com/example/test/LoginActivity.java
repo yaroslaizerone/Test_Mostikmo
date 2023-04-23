@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "Аунтификация прошла успешно",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, PinCode.class));
                     }else{
                         Toast.makeText(LoginActivity.this, "Ошибка Аунтификации:"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                     }

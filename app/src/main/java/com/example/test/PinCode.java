@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 public class PinCode extends AppCompatActivity {
 
     String pincode = "";
-    TextView num1,num2,num3,num4,num5,num6,num7,num8,num9,num0;
+    TextView num1,num2,num3,num4,num5,num6,num7,num8,num9,num0, respin, backLog;
     ImageView pon1, pon2, pon3, pon4;
     ImageButton clearbt, cheakbt;
     FirebaseUser user;
@@ -54,24 +54,26 @@ public class PinCode extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        num1 = (TextView) findViewById(R.id.num1);
-        num2 = (TextView) findViewById(R.id.num2);
-        num3 = (TextView) findViewById(R.id.num3);
-        num4 = (TextView) findViewById(R.id.num4);
-        num5 = (TextView) findViewById(R.id.num5);
-        num6 = (TextView) findViewById(R.id.num6);
-        num7 = (TextView) findViewById(R.id.num7);
-        num8 = (TextView) findViewById(R.id.num8);
-        num9 = (TextView) findViewById(R.id.num9);
-        num0 = (TextView) findViewById(R.id.num0);
+        num1 = findViewById(R.id.num1);
+        num2 = findViewById(R.id.num2);
+        num3 = findViewById(R.id.num3);
+        num4 = findViewById(R.id.num4);
+        num5 = findViewById(R.id.num5);
+        num6 = findViewById(R.id.num6);
+        num7 = findViewById(R.id.num7);
+        num8 = findViewById(R.id.num8);
+        num9 = findViewById(R.id.num9);
+        num0 = findViewById(R.id.num0);
+        respin = findViewById(R.id.resretpincode);
+        backLog = findViewById(R.id.backtologin);
 
-        pon1 = (ImageView) findViewById(R.id.point1);
-        pon2 = (ImageView) findViewById(R.id.point2);
-        pon3 = (ImageView) findViewById(R.id.point3);
-        pon4 = (ImageView) findViewById(R.id.point4);
+        pon1 = findViewById(R.id.point1);
+        pon2 = findViewById(R.id.point2);
+        pon3 = findViewById(R.id.point3);
+        pon4 = findViewById(R.id.point4);
 
-        clearbt = (ImageButton) findViewById(R.id.clearpin);
-        cheakbt = (ImageButton) findViewById(R.id.acceptinput);
+        clearbt = findViewById(R.id.clearpin);
+        cheakbt = findViewById(R.id.acceptinput);
 
         clearbt.setOnClickListener(v->clearsumbolpincode());
         cheakbt.setOnClickListener(v->Cheakpincode());
@@ -86,6 +88,8 @@ public class PinCode extends AppCompatActivity {
         num8.setOnClickListener(v-> inputpincode("8"));
         num9.setOnClickListener(v-> inputpincode("9"));
         num0.setOnClickListener(v-> inputpincode("0"));
+        respin.setOnClickListener(v-> Resetpincode());
+        backLog.setOnClickListener(v -> BackToLogin());
     }
 
     void inputpincode(String num){
@@ -137,7 +141,14 @@ public class PinCode extends AppCompatActivity {
         }
     }
     //TODO Сделать проверку ввода пинкода и так ЧТОБЫ МОЖНО БЫЛО УЙТИ С ЭКРАНА ЕСЛИ НЕ ТВОЙ АККАУНТ
+    void BackToLogin(){
+        startActivity(new Intent(this,LoginActivity.class));
+    }
     //TODO СДЕЛАТЬ СБРОС ПИНКОДА
+    void Resetpincode(){
+        startActivity(new Intent(this, CreatePinCode.class));
+    }
+    //TODO Сделать проверку правильности пинкода
     void Cheakpincode(){
         CollectionReference pinRef = db.collection("pin");
         pinRef.whereEqualTo("email", user.getEmail()).whereEqualTo("pincode", pincode).get()
@@ -154,7 +165,6 @@ public class PinCode extends AppCompatActivity {
                         }
                     }
                 });
-        //startActivity(new Intent(PinCode.this,MainActivity.class));
     }
     @Override
     protected void onStart() {
@@ -164,6 +174,7 @@ public class PinCode extends AppCompatActivity {
             startActivity(new Intent(PinCode.this, LoginActivity.class));
         }else{
             Log.i("User",user.getEmail());
+            //TODO Убрать переход это для тестов
             //startActivity(new Intent(PinCode.this, MainActivity.class));
         }
     }

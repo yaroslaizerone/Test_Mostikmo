@@ -226,15 +226,29 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/resretpincode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Сбросить pin-code"
         android:textColor="#6E6EFF"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/backtologin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Авторизироваться"
+        android:textColor="#6E6EFF"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/resretpincode"
         tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

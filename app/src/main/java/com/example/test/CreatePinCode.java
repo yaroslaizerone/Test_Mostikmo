@@ -19,8 +19,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,17 +132,47 @@ public class CreatePinCode extends AppCompatActivity {
 
     void createpincode (){
         //TODO СДЕЛАТЬ ПРОВЕРКУ НА НАЛИЧИЕ У ДАННОГО ПОЛЬЗОВАТЕЛЯ ПИНКОДА И ЕСЛИ ЕСТЬ ТО ОБНОВЛЯТЬ ЕГО
-        Map<String, Object> picodeuser = new HashMap<>();
-        picodeuser.put("email", user.getEmail());
-        picodeuser.put("pincode", pincode);
+        Map<String, Object> pincodeuser = new HashMap<>();
+        pincodeuser.put("email", user.getEmail());
+        pincodeuser.put("pincode", pincode);
 
-        db.collection("pin").add(picodeuser)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+        CollectionReference pinRef = db.collection("pin");
+        //Если у данного пользователя ранее не было пин-кода
+        pinRef.whereNotEqualTo("email", user.getEmail()).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        Toast.makeText(getApplicationContext(),"Successfully", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            db.collection("pin").document(user.getEmail()).set(pincodeuser);
+                                /*db.collection("pin").add(pincodeuser)
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                Toast.makeText(getApplicationContext(),"Готово", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });*/
+                            Toast.makeText(CreatePinCode.this, "Пин-код был привязан к вашему аккаунту", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreatePinCode.this,MainActivity.class));
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
                     }
                 });
+        //Если у данного пользователя ранее был пин-код
+        pinRef.whereEqualTo("email", user.getEmail()).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            db.collection("cities").document(user.getEmail()).update(pincodeuser);
+                            Toast.makeText(CreatePinCode.this, "Пин-код для " + user.getEmail() + " был изменён", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreatePinCode.this,MainActivity.class));
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
 
         startActivity(new Intent(this,MainActivity.class));
     }
