@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,7 +44,7 @@ public class PinCode extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
-    ArrayList<Type> mArrayList = new ArrayList<>();
+    public static int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +158,6 @@ public class PinCode extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
                                 startActivity(new Intent(PinCode.this,MainActivity.class));
                             }
                         } else {
@@ -173,6 +173,12 @@ public class PinCode extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(PinCode.this, LoginActivity.class));
         }else{
+            i++;
+            if (i == 1) {
+                respin.setVisibility(View.GONE);
+            }else{
+                respin.setVisibility(View.VISIBLE);
+            }
             Log.i("User",user.getEmail());
             //TODO Убрать переход это для тестов
             //startActivity(new Intent(PinCode.this, MainActivity.class));

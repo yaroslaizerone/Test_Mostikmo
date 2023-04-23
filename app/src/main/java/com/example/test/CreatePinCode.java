@@ -144,14 +144,6 @@ public class CreatePinCode extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             db.collection("pin").document(user.getEmail()).set(pincodeuser);
-                                /*db.collection("pin").add(pincodeuser)
-                                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                Toast.makeText(getApplicationContext(),"Готово", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });*/
-                            Toast.makeText(CreatePinCode.this, "Пин-код был привязан к вашему аккаунту", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(CreatePinCode.this,MainActivity.class));
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
