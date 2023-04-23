@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText email_input,password_input;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     TextView Regist, respass;
     ImageButton show_password;
+    public static int j = 0;
 
     int i = 1;
 
@@ -86,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "Аунтификация прошла успешно",Toast.LENGTH_SHORT).show();
+                        j++;
                         startActivity(new Intent(LoginActivity.this, PinCode.class));
                     }else{
                         Toast.makeText(LoginActivity.this, "Ошибка Аунтификации:"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();

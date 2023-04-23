@@ -29,6 +29,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.ktx.Firebase;
+import static com.example.test.LoginActivity.j;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class PinCode extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
-    public static int i = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,8 +174,7 @@ public class PinCode extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(PinCode.this, LoginActivity.class));
         }else{
-            i++;
-            if (i == 1) {
+            if (j == 0) {
                 respin.setVisibility(View.GONE);
             }else{
                 respin.setVisibility(View.VISIBLE);

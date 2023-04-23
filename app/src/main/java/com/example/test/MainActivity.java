@@ -24,19 +24,25 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+        replaceFragment(new OperationFragment());
         mAuth = FirebaseAuth.getInstance();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.home:
-                    replaceFragment(new HomeFragment());
+                case R.id.bankcards:
+                    replaceFragment(new CardFragment());
                     break;
-                case R.id.fau:
-                    replaceFragment(new Fragment2());
+                case R.id.topuppayment:
+                    replaceFragment(new OperationFragment());
                     break;
-                case R.id.gop:
-                    replaceFragment(new Fragment3());
+                case R.id.paperwork:
+                    replaceFragment(new PlanFragment());
+                    break;
+                case R.id.graph:
+                    replaceFragment(new AnalysisFragment());
+                    break;
+                case R.id.about:
+                    replaceFragment(new MoreFragment());
                     break;
             }
             return true;
