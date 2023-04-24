@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.time.temporal.ValueRange;
+
 import kotlin.io.LineReader;
 
 /**
@@ -70,8 +72,15 @@ public class MoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout OUT = (LinearLayout) getView().findViewById(R.id.linearLayoutOUT);
-        OUT.setOnClickListener(v -> logout());
+        LinearLayout OUT = getView().findViewById(R.id.linearLayoutOUT);
+        LinearLayout Location = getView().findViewById(R.id.mapListLayout);
+        LinearLayout valut = getView().findViewById(R.id.valutChengeLayout);
+        LinearLayout category = getView().findViewById(R.id.categoryLayout);
+
+        OUT.setOnClickListener(v -> Logout());
+        Location.setOnClickListener(v -> GoToLocationlist());
+        valut.setOnClickListener(v -> GoToValutChange());
+        category.setOnClickListener(v -> GoToCategory());
     }
 
     @Override
@@ -80,9 +89,18 @@ public class MoreFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_more, container, false);
     }
-
-    void logout (){
+    //TODO сделать переходы на активности из дополнительного меню
+    void Logout (){
         mAuth.signOut();
         startActivity(new Intent(getActivity(),LoginActivity.class));
+    }
+    void GoToLocationlist(){
+        startActivity(new Intent(getActivity(), LocationListActivity.class));
+    }
+    void GoToValutChange(){
+        startActivity(new Intent(getActivity(), CurrencySelectionActivity.class));
+    }
+    void GoToCategory(){
+        startActivity(new Intent(getActivity(), CategoryListActivity.class));
     }
 }

@@ -21,35 +21,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/userEmail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:text="Login1"
+                android:text="Email@email.email"
                 android:textColor="@color/black"
-                android:textSize="32dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="Email@mail.ru"
-                android:textColor="#A49D9D"
-                android:textSize="16dp" />
-
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/categoryLayout"
             android:layout_width="410dp"
             android:layout_height="91dp"
-            android:layout_below="@+id/linearLayout1"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="532dp"
+            android:layout_above="@+id/mapListLayout"
+            android:layout_marginBottom="18dp"
             android:background="#F2F2F2"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,9 +46,9 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/diversity"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="20dp"
+                android:background="@drawable/diversity" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,15 +62,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/mapListLayout"
             android:layout_width="410dp"
             android:layout_height="91dp"
-            android:layout_below="@+id/linearLayout1"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="429dp"
+            android:layout_above="@+id/valutChengeLayout"
+            android:layout_marginBottom="18dp"
             android:background="#F2F2F2"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,15 +91,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/valutChengeLayout"
             android:layout_width="410dp"
             android:layout_height="91dp"
-            android:layout_below="@+id/linearLayout1"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="227dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="322dp"
+            android:layout_above="@+id/linearLayoutOUT"
+            android:layout_marginBottom="18dp"
             android:background="#F2F2F2"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +106,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:background="@drawable/dollar_euro_exchange"/>
+                android:background="@drawable/dollar_euro_exchange" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -143,15 +123,10 @@
             android:id="@+id/linearLayoutOUT"
             android:layout_width="410dp"
             android:layout_height="91dp"
-            android:layout_below="@+id/linearLayout1"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="333dp"
-            android:layout_marginBottom="216dp"
+            android:layout_marginBottom="154dp"
             android:background="#F2F2F2"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/im2"
@@ -171,8 +146,5 @@
                 android:textSize="24dp" />
 
         </LinearLayout>
-
     </RelativeLayout>
-
-
 </FrameLayout>
