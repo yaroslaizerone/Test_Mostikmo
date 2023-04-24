@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/BackActiv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/saveBT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -41,7 +42,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/InputuserLogin"
+        android:id="@+id/LocationET"
         android:layout_width="350dp"
         android:layout_height="44dp"
         android:layout_marginStart="28dp"
