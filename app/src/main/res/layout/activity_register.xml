@@ -7,9 +7,9 @@
     android:background="@drawable/startbackground">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:id="@+id/BackActiv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:clickable="true"

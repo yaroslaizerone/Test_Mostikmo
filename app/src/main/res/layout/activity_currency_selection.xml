@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".CurrencySelectionActivity">
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="43dp"
-        android:layout_height="45dp"
+        android:id="@+id/BackActiv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,168 +16,371 @@
         app:srcCompat="@drawable/buttonback"
         android:clickable="true"
         android:onClick="BackActivity"/>
-
-
     <TextView
+        android:id="@+id/textView"
         android:layout_width="318dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="76dp"
-        android:text="Выбирете основную валюту аккаунта"
+        android:gravity="center"
+        android:text="Курс валют в рублях"
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="560dp"
-        android:background="@drawable/roundbutton"
-        android:text="Продолжить"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="318dp"
-        android:layout_height="74dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="148dp"
-        android:text="Она будет использована для расчета общего баланса и отчетов.\n Основную валюту всегда можно поменять в разделе НАСТРОЙКИ."
+        android:gravity="center"
+        android:text="Отслеживайте курс валют в реальном времени, чтобы быть всегда в курсе!"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
+    <TextView
+        android:id="@+id/eur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="EUR"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/Rubl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Российский рубль"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/Dollar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Доллар США"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/Evro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Евро"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/Tenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Казахстанский тенге"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/Youan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Китайский юань"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/Funt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Фунт стерлингов"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/usd" />
 
     <TextView
-        android:id="@+id/tvRub"
+        android:id="@+id/dollarBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="260dp"
-        android:text="₽"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="24dp"
+        android:text="0.00"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/usd"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/tvFunt"
+        android:id="@+id/dollarSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="496dp"
-        android:text="£"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="24dp"
+        android:text="0.00"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/dollarBuy"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/tvDollar"
+        android:id="@+id/usd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="304dp"
-        android:text="$"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="68dp"
+        android:text="USD"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/tvTenge"
+        android:id="@+id/eurBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="400dp"
-        android:text="₸"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="49dp"
+        android:text="0.00"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/eur"
+        app:layout_constraintTop_toBottomOf="@+id/dollarBuy" />
 
     <TextView
-        android:id="@+id/tvYouan"
+        android:id="@+id/eurSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="448dp"
-        android:text="¥"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="28dp"
+        android:text="0.00"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/eurBuy"
+        app:layout_constraintTop_toBottomOf="@+id/dollarSell" />
 
     <TextView
-        android:id="@+id/textEvro"
+        android:id="@+id/chy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="352dp"
-        android:text="€"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="CNY"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eur" />
+
+    <TextView
+        android:id="@+id/cnyBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="47dp"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/chy"
+        app:layout_constraintTop_toBottomOf="@+id/eurBuy" />
+
+    <TextView
+        android:id="@+id/cnySell"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/cnyBuy"
+        app:layout_constraintTop_toBottomOf="@+id/eurSell" />
+
+    <TextView
+        android:id="@+id/byn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="BYN"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chy" />
+
+    <TextView
+        android:id="@+id/bynBuy"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/byn"
+        app:layout_constraintTop_toBottomOf="@+id/cnyBuy" />
+
+    <TextView
+        android:id="@+id/CNY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="GBP"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/byn" />
+
+    <TextView
+        android:id="@+id/CHF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="CHF"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CNY" />
+
+    <TextView
+        android:id="@+id/chfBuy"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/CHF"
+        app:layout_constraintTop_toBottomOf="@+id/gbpBuy" />
+
+    <TextView
+        android:id="@+id/chfSell"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/chfBuy"
+        app:layout_constraintTop_toBottomOf="@+id/gbpSell" />
+
+    <TextView
+        android:id="@+id/gbpBuy"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/CNY"
+        app:layout_constraintTop_toBottomOf="@+id/bynBuy" />
+
+    <TextView
+        android:id="@+id/gbpSell"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/gbpBuy"
+        app:layout_constraintTop_toBottomOf="@+id/bynSell" />
+
+    <TextView
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="28dp"
+        android:id="@+id/bynSell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/bynBuy"
+        app:layout_constraintTop_toBottomOf="@+id/cnySell" />
+
+    <TextView
+        android:id="@+id/aedBuy"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/aed"
+        app:layout_constraintTop_toBottomOf="@+id/chfBuy" />
+
+    <TextView
+        android:id="@+id/aedSell"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/aedBuy"
+        app:layout_constraintTop_toBottomOf="@+id/chfSell" />
+
+    <TextView
+        android:id="@+id/aed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:text="AED"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CHF" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="24dp"
+        android:text="Покупка"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        android:text="Продажа"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/unitedstates"
+        app:layout_constraintEnd_toStartOf="@+id/usd"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/europeanunion"
+        app:layout_constraintEnd_toStartOf="@+id/eur"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/china"
+        app:layout_constraintEnd_toStartOf="@+id/chy"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/belarus"
+        app:layout_constraintEnd_toStartOf="@+id/byn"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/arabemirates"
+        app:layout_constraintEnd_toStartOf="@+id/aed"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/switzerland"
+        app:layout_constraintEnd_toStartOf="@+id/CHF"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/unitedkingdom"
+        app:layout_constraintEnd_toStartOf="@+id/CNY"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

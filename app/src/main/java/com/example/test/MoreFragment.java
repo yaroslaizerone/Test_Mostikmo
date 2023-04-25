@@ -12,12 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.time.temporal.ValueRange;
-
-import kotlin.io.LineReader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +27,8 @@ import kotlin.io.LineReader;
 public class MoreFragment extends Fragment {
 
     FirebaseAuth mAuth;
+    FirebaseUser user;
+    TextView userEm;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +65,7 @@ public class MoreFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -76,6 +79,8 @@ public class MoreFragment extends Fragment {
         LinearLayout Location = getView().findViewById(R.id.mapListLayout);
         LinearLayout valut = getView().findViewById(R.id.valutChengeLayout);
         LinearLayout category = getView().findViewById(R.id.categoryLayout);
+        userEm = getView().findViewById(R.id.userEmail);
+        userEm.setText(user.getEmail());
 
         OUT.setOnClickListener(v -> Logout());
         Location.setOnClickListener(v -> GoToLocationlist());

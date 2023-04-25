@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText email_input,password_input,repitpassword_input;
     ImageButton show_password, show_rpassword;
+    ImageView BackAct;
     int i,j = 1;
     FirebaseAuth mAuth;
 
@@ -34,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         Button buttonsingup = findViewById(R.id.Singup);
+        BackAct = findViewById(R.id.BackActiv);
         email_input = findViewById(R.id.editTextTextEmailAddress);
         password_input = findViewById(R.id.editTextTextPassword);
         repitpassword_input = findViewById(R.id.Repitpassword);
@@ -42,6 +45,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        BackAct.setOnClickListener(view->{
+            finish();
+        });
         buttonsingup.setOnClickListener(view ->{
             createUser();
         });
