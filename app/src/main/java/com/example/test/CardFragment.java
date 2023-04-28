@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +62,8 @@ public class CardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        TextView addMoney = getView().findViewById(R.id.AddnewMoney);
+        addMoney.setOnClickListener(v -> GoToAddMoney());
     }
 
     @Override
@@ -68,5 +71,8 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_card, container, false);
+    }
+    void GoToAddMoney(){
+        startActivity(new Intent(getActivity(), AddNewMoneyCardActivity.class));
     }
 }

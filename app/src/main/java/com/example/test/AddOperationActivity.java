@@ -1,5 +1,7 @@
 package com.example.test;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +32,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddOperationActivity extends AppCompatActivity {
 
@@ -37,12 +43,13 @@ public class AddOperationActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     ImageView btBack;
     DatePicker DataOperations;
-    RadioGroup TypeoperationGroup, TypeCategory;
+    RadioGroup TypeoperationGroup, TypeCategoryGroup;
     EditText coment, summa;
     Spinner typeMoney, typeLocation;
     Button saveOperation;
     List<String> locationList = new ArrayList<String>();
     List<String> moneyList = new ArrayList<String>();
+    String TypeOper, TypeCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +81,7 @@ public class AddOperationActivity extends AppCompatActivity {
                         }
                     }
                 });
-        db.collection("userLocated")
+        db.collection("userScore")
                 .whereEqualTo("email", user.getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -83,12 +90,12 @@ public class AddOperationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("User", document.getId() + " => " + document.getData());
-                                locationList.add(document.getString("nameLocation"));
+                                moneyList.add(document.getString("namemoney"));
                             }
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddOperationActivity.this,
-                                    android.R.layout.simple_spinner_item, locationList);
+                                    android.R.layout.simple_spinner_item, moneyList);
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            typeLocation.setAdapter(adapter);
+                            typeMoney.setAdapter(adapter);
                         } else {
                             Log.d("User", "Error getting documents: ", task.getException());
                         }
@@ -96,7 +103,7 @@ public class AddOperationActivity extends AppCompatActivity {
                 });
 
         TypeoperationGroup = findViewById(R.id.radioGroup3);
-        TypeCategory = findViewById(R.id.radioGroup4);
+        TypeCategoryGroup = findViewById(R.id.radioGroup4);
         coment = findViewById(R.id.commentUser);
         summa = findViewById(R.id.InputCoast);
         DataOperations = findViewById(R.id.datePickerOperation);
@@ -111,6 +118,93 @@ public class AddOperationActivity extends AppCompatActivity {
     }
     //TODO Сделать запись всех локаций, счетов и дт при первой загрузки приложения и испоьзовать его сдесь для создания новой операции
     void SaveOperationUser(){
+        switch(TypeoperationGroup.getCheckedRadioButtonId()){
+            case R.id.Rashod:
+                TypeOper = "Расход";
+                break;
+            case R.id.Dohod:
+                TypeOper = "Доход";
+                break;
+            case R.id.Perevod:
+                TypeOper = "Перевод";
+                break;
+            case R.id.Dolg:
+                TypeOper = "Долг";
+                break;
+        }
+        switch(TypeCategoryGroup.getCheckedRadioButtonId()){
+            case R.id.r1:
+                TypeCategory = "Дети";
+                break;
+            case R.id.r2:
+                TypeCategory = "Забота о себе";
+                break;
+            case R.id.r3:
+                TypeCategory = "Зарплата";
+                break;
+            case R.id.r4:
+                TypeCategory = "Продукты";
+                break;
+            case R.id.r5:
+                TypeCategory = "Кафе и рестораны";
+                break;
+            case R.id.r6:
+                TypeCategory = "Корректировка";
+                break;
+            case R.id.r7:
+                TypeCategory = "Машина";
+                break;
+            case R.id.r8:
+                TypeCategory = "Образование";
+                break;
+            case R.id.r9:
+                TypeCategory = "Отдых и развлечения";
+                break;
+            case R.id.r10:
+                TypeCategory = "Платежи и комиссии";
+                break;
+            case R.id.r11:
+                TypeCategory = "Подарки";
+                break;
+            case R.id.r12:
+                TypeCategory = "Покупки: одежда, техника";
+                break;
+            case R.id.r13:
+                TypeCategory = "Проезд";
+                break;
+            case R.id.r14:
+                TypeCategory = "Здоровье и фитнес";
+                break;
+        }
+        int day = DataOperations.getDayOfMonth();
+        int month = DataOperations.getMonth() + 1;
+        int year = DataOperations.getYear();
+        String date = day+"."+month+"."+year;
+        String Opercomment = coment.getText().toString();
+        String summaoperation = summa.getText().toString();
+        Map<String, Object> userOperation = new HashMap<>();
+        userOperation.put("email", user.getEmail());
+        userOperation.put("comment", Opercomment);
+        userOperation.put("typeoperation",TypeOper);
+        userOperation.put("summa",summaoperation);
+        userOperation.put("typecategoty", TypeCategory);
+        userOperation.put("moneyoperation", typeMoney.getSelectedItem().toString());
+        userOperation.put("locationoperation", typeLocation.getSelectedItem().toString());
+        userOperation.put("dateoperation", date);
 
+        db.collection("userOperation")
+                .add(userOperation)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(AddOperationActivity.this, "Операция была успешно добавленна.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
     }
 }
