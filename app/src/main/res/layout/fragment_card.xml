@@ -53,11 +53,11 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:id="@+id/AddnewMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:gravity=""
                     android:text="+"
                     android:textSize="42dp" />
             </LinearLayout>
@@ -71,12 +71,6 @@
                 android:textSize="16dp" />
         </LinearLayout>
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="91dp">
-
-        </ListView>
     </RelativeLayout>
 
 </FrameLayout>

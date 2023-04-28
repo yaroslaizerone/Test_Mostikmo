@@ -72,7 +72,5 @@ public class AddLocatedActivity extends AppCompatActivity {
                     }
                 });
     }
-    void Backctivity(){
-        finish();
-    }
+    void Backctivity(){finish();}
 }

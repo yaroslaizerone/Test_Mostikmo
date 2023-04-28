@@ -3,18 +3,18 @@ package com.example.test;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.*;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOError;
 import java.io.IOException;
 
 public class CurrencySelectionActivity extends AppCompatActivity {
@@ -80,34 +80,82 @@ public class CurrencySelectionActivity extends AppCompatActivity {
                 Elements coastbuy_element = coastbuy.children();
                 Element coastsell = valut_element.get(2);
                 Elements coastsell_element = coastsell.children();
+                Pattern decimalNumPattern = Pattern.compile("[-]?[0-9]+(.[0-9]+)?");
+                Matcher matcher;
                 switch (valutname){
                     case "USD":
-                        usbuy = coastbuy_element.get(0).text().substring(0,5);
+                        //usbuy = coastbuy_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            usbuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            ussell = matcher.group();
+                        }
                         ussell = coastsell_element.get(0).text().substring(0,5);
                         break;
                     case "EUR":
-                        erbuy = coastbuy_element.get(0).text().substring(0,5);
-                        ersell = coastsell_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            erbuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            ersell = matcher.group();
+                        }
                         break;
                     case "CNY":
-                        cnbuy = coastbuy_element.get(0).text().substring(0,5);
-                        cnsell = coastsell_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            cnbuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            cnsell = matcher.group();
+                        }
                         break;
                     case "BYN":
                         bybuy = coastbuy_element.get(0).text().substring(0,5);
                         bysell = coastsell_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            bybuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            bysell = matcher.group();
+                        }
                         break;
                     case "GBP":
-                        gbbuy = coastbuy_element.get(0).text().substring(0,5);
-                        gbsell = coastsell_element.get(0).text().substring(0,4);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            gbbuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            gbsell = matcher.group();
+                        }
                         break;
                     case "CHF":
-                        chbuy = coastbuy_element.get(0).text().substring(0,5);
-                        chsell = coastsell_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            chbuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            chsell = matcher.group();
+                        }
                         break;
                     case "AED":
-                        aebuy = coastbuy_element.get(0).text().substring(0,5);
-                        aesell = coastsell_element.get(0).text().substring(0,5);
+                        matcher = decimalNumPattern.matcher(coastbuy_element.get(0).text());
+                        while (matcher.find()) {
+                            aebuy = matcher.group();
+                        }
+                        matcher = decimalNumPattern.matcher(coastsell_element.get(0).text());
+                        while (matcher.find()) {
+                            aesell = matcher.group();
+                        }
                         break;
                 }
             }

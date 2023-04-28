@@ -68,12 +68,12 @@
         android:id="@+id/dollarSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="20dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/dollarBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -104,12 +104,12 @@
         android:id="@+id/eurSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="32dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/eurBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dollarSell" />
 
     <TextView
@@ -138,14 +138,14 @@
 
     <TextView
         android:id="@+id/cnySell"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="28dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="28dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/cnyBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eurSell" />
 
     <TextView
@@ -210,14 +210,14 @@
 
     <TextView
         android:id="@+id/chfSell"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="28dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="28dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/chfBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gbpSell" />
 
     <TextView
@@ -234,26 +234,26 @@
 
     <TextView
         android:id="@+id/gbpSell"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="28dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="28dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/gbpBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bynSell" />
 
     <TextView
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="28dp"
         android:id="@+id/bynSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="28dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/bynBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cnySell" />
 
     <TextView
@@ -270,14 +270,14 @@
 
     <TextView
         android:id="@+id/aedSell"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="28dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="28dp"
         android:text="0.00"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/aedBuy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chfSell" />
 
     <TextView

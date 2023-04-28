@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new OperationFragment());
+        replaceFragment(new CardFragment());
         mAuth = FirebaseAuth.getInstance();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {

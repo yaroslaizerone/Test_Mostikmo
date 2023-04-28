@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Mosticsmo"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:textColor="#6E6EFF"
         android:textSize="48dp"
         android:textStyle="bold"
@@ -193,7 +193,7 @@
         android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
         tools:layout_editor_absoluteX="-16dp">
 

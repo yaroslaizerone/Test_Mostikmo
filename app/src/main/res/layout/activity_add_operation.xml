@@ -5,12 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddOperationActivity">
+    <ImageView
+        android:id="@+id/BackActiv"
+        android:layout_marginTop="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/buttonback"
+        android:clickable="true"
+        android:layout_gravity="center"/>
+
     <RadioGroup
         android:id="@+id/radioGroup3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -270,17 +283,19 @@
             android:orientation="horizontal"
             android:layout_marginTop="30dp">
             <ImageView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bankbuildingicon"
                 tools:layout_editor_absoluteX="17dp"
                 tools:layout_editor_absoluteY="287dp"
                 android:layout_marginStart="60dp"/>
-            <TextView
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/typeMoney"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Карта"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="28dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -295,12 +310,14 @@
                 tools:layout_editor_absoluteX="17dp"
                 tools:layout_editor_absoluteY="287dp"
                 android:layout_marginStart="60dp"/>
-            <TextView
-                android:gravity="center"
-                android:layout_marginStart="16dp"
+
+            <DatePicker
+                android:id="@+id/datePickerOperation"
+                android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11.03.2023"/>
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"/>
         </LinearLayout>
         <LinearLayout
             android:gravity="center"
@@ -315,12 +332,14 @@
                 tools:layout_editor_absoluteX="17dp"
                 tools:layout_editor_absoluteY="287dp"
                 android:layout_marginStart="60dp"/>
-            <TextView
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/typeUserLocation"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Дом"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="28dp"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -334,12 +353,23 @@
                 tools:layout_editor_absoluteX="17dp"
                 tools:layout_editor_absoluteY="287dp"
                 android:layout_marginStart="60dp"/>
-            <TextView
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/commentUser"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Отсутсвует"/>
+                android:gravity="left"
+                android:hint="Добавьте комментарий"
+                android:textSize="18dp"
+                android:layout_marginStart="10dp"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/saveBT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:background="@drawable/roundbuttonuix"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

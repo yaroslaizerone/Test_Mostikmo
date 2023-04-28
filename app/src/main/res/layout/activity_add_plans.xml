@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/BackActiv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/addPlanClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -103,7 +104,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/InputCoast"
+                android:id="@+id/CostInput"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
@@ -131,6 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <RadioButton
+            android:id="@+id/Rashod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_selector"
@@ -141,6 +143,7 @@
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
+            android:id="@+id/Dohod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_selector"

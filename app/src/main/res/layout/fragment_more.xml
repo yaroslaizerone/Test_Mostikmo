@@ -15,7 +15,7 @@
             android:id="@+id/linearLayout1"
             android:layout_width="410dp"
             android:layout_height="91dp"
-            android:background="#D9D9D9"
+            android:background="@drawable/roundlayout_menu"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -24,21 +24,22 @@
                 android:id="@+id/userEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
                 android:text="Email@email.email"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
+                android:layout_gravity="center"
                 android:gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/categoryLayout"
             android:layout_width="410dp"
-            android:layout_height="91dp"
+            android:layout_height="60dp"
             android:layout_above="@+id/mapListLayout"
+
             android:layout_marginBottom="18dp"
-            android:background="#F2F2F2"
+            android:background="#d7f3f7"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -64,10 +65,10 @@
         <LinearLayout
             android:id="@+id/valutChengeLayout"
             android:layout_width="410dp"
-            android:layout_height="91dp"
+            android:layout_height="60dp"
             android:layout_above="@+id/linearLayoutOUT"
             android:layout_marginBottom="17dp"
-            android:background="#F2F2F2"
+            android:background="#d7f3f7"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -93,10 +94,10 @@
         <LinearLayout
             android:id="@+id/linearLayoutOUT"
             android:layout_width="410dp"
-            android:layout_height="91dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="190dp"
-            android:background="#F2F2F2"
+            android:layout_marginBottom="336dp"
+            android:background="#d7f3f7"
             android:orientation="horizontal">
 
             <ImageView
@@ -121,10 +122,10 @@
         <LinearLayout
             android:id="@+id/mapListLayout"
             android:layout_width="410dp"
-            android:layout_height="91dp"
+            android:layout_height="60dp"
             android:layout_above="@+id/valutChengeLayout"
             android:layout_marginBottom="18dp"
-            android:background="#F2F2F2"
+            android:background="#d7f3f7"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

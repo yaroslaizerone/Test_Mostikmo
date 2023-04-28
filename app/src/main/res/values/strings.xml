@@ -2,4 +2,25 @@
     <string name="app_name">Mosticsmo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="TypeCard">
+        <item>Дебетовая карта</item>
+        <item>Наличные</item>
+        <item>Счёт в банке</item>
+    </string-array>
+    <string-array name="TypeValut">
+        <item>Рубль</item>
+        <item>Доллар</item>
+        <item>Фунт стерлингов</item>
+        <item>Юань</item>
+        <item>Евро</item>
+        <item>Белорусский рубль</item>
+        <item>Швейцарский франк</item>
+        <item>Дирхам</item>
+    </string-array>
+    <string-array name="Bank">
+        <item>СберБанк</item>
+        <item>ВТБ</item>
+        <item>АльфаБанк</item>
+        <item>Тинькофф</item>
+    </string-array>
 </resources>
