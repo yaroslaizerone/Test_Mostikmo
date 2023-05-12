@@ -45,7 +45,7 @@ public class PinCode extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
-
+    int o;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,18 +139,16 @@ public class PinCode extends AppCompatActivity {
                 pon2.setImageResource(R.drawable.roundbuttoninput);
                 pon3.setImageResource(R.drawable.roundbuttoninput);
                 pon4.setImageResource(R.drawable.roundbuttoninput);
+                Cheakpincode();
                 break;
         }
     }
-    //TODO Сделать проверку ввода пинкода и так ЧТОБЫ МОЖНО БЫЛО УЙТИ С ЭКРАНА ЕСЛИ НЕ ТВОЙ АККАУНТ
     void BackToLogin(){
         startActivity(new Intent(this,LoginActivity.class));
     }
-    //TODO СДЕЛАТЬ СБРОС ПИНКОДА
     void Resetpincode(){
         startActivity(new Intent(this, CreatePinCode.class));
     }
-    //TODO Сделать проверку правильности пинкода
     void Cheakpincode(){
         CollectionReference pinRef = db.collection("pin");
         pinRef.whereEqualTo("email", user.getEmail()).whereEqualTo("pincode", pincode).get()
@@ -160,12 +158,31 @@ public class PinCode extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 startActivity(new Intent(PinCode.this,MainActivity.class));
+                                o++;
+                                finish();
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
+        if (o<1){
+            pinRef.whereEqualTo("email", user.getEmail()).whereNotEqualTo("pincode", pincode).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()) {
+                                Toast.makeText(PinCode.this, "Не верный пинкод!", Toast.LENGTH_SHORT).show();
+                                pincode = "";
+                                viewpincodecontrol();
+                            } else {
+                                Toast.makeText(PinCode.this, "Не верный пинкод!", Toast.LENGTH_SHORT).show();
+                                pincode = "";
+                                viewpincodecontrol();
+                            }
+                        }
+                    });
+        }
     }
     @Override
     protected void onStart() {
@@ -179,9 +196,6 @@ public class PinCode extends AppCompatActivity {
             }else{
                 respin.setVisibility(View.VISIBLE);
             }
-            Log.i("User",user.getEmail());
-            //TODO Убрать переход это для тестов
-            //startActivity(new Intent(PinCode.this, MainActivity.class));
         }
     }
 }
