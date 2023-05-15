@@ -172,11 +172,9 @@ public class PinCode extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if(task.isSuccessful()) {
-                                Toast.makeText(PinCode.this, "Не верный пинкод!", Toast.LENGTH_SHORT).show();
                                 pincode = "";
                                 viewpincodecontrol();
                             } else {
-                                Toast.makeText(PinCode.this, "Не верный пинкод!", Toast.LENGTH_SHORT).show();
                                 pincode = "";
                                 viewpincodecontrol();
                             }

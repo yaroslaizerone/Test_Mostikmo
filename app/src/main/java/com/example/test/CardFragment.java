@@ -1,16 +1,35 @@
 package com.example.test;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +37,11 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class CardFragment extends Fragment {
+
+    ArrayList<CardModel> cardsUser = new ArrayList<>();
+    FirebaseFirestore db;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +88,19 @@ public class CardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView addMoney = getView().findViewById(R.id.AddnewMoney);
         addMoney.setOnClickListener(v -> GoToAddMoney());
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        RecyclerView recyclerView = getView().findViewById(R.id.cardRecycleView);
+
+        setUsercards();
+
+        AA_Recycle_Viev_Adapter adapter = new AA_Recycle_Viev_Adapter(getContext(),
+                cardsUser);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -74,5 +111,118 @@ public class CardFragment extends Fragment {
     }
     void GoToAddMoney(){
         startActivity(new Intent(getActivity(), AddNewMoneyCardActivity.class));
+    }
+    void setUsercards(){
+
+        List<String> usernamemoney = new ArrayList<String>();
+        List<String> userBankmoney = new ArrayList<String>();
+        List<String> userTypecard = new ArrayList<String>();
+        List<String> userTypevalut = new ArrayList<String>();
+        List<String> userScore = new ArrayList<String>();
+        int imageBank = 0;
+        int image[] = {R.drawable.alfa, R.drawable.sber, R.drawable.tintkoff, R.drawable.vtb};
+        //Взять данные о его названиях карт
+        db.collection("userScore")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                usernamemoney.add(document.getString("namemoney"));
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        //Взять данные о его банках
+        db.collection("userScore")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                userBankmoney.add(document.getString("typebank"));
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        //Взять данные о его типах хранения денег
+        db.collection("userScore")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                userTypecard.add(document.getString("typecard"));
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        //Взять данные о его ватютах
+        db.collection("userScore")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                userTypevalut.add(document.getString("typevalut"));
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        //Взять данные о его деньгах
+        db.collection("userScore")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                userScore.add(document.getString("scoremoney"));
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        for (int i = 0; i<usernamemoney.size(); i++){
+            switch (userBankmoney.get(i)){
+                case "СберБанк":
+                    imageBank = image[1];
+                    break;
+                case "ВТБ":
+                    imageBank = image[3];
+                    break;
+                case "АльфаБанк":
+                    imageBank = image[0];
+                    break;
+                case "Тинькофф":
+                    imageBank = image[2];
+                    break;
+
+            }
+            cardsUser.add(new CardModel(usernamemoney.get(i),
+                    imageBank,
+                    userTypecard.get(i),
+                    userTypevalut.get(i),
+                    userScore.get(i)));
+        }
+
     }
 }

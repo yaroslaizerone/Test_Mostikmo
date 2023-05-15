@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class AddLocatedActivity extends AppCompatActivity {
     ImageView btBack;
     EditText NameLocation;
     TextView SaveText;
+    Spinner TypeUserLocation;
+    String TypeLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class AddLocatedActivity extends AppCompatActivity {
         btBack = findViewById(R.id.BackActiv);
         NameLocation = findViewById(R.id.LocationET);
         SaveText= findViewById(R.id.saveBT);
+        TypeUserLocation = findViewById(R.id.typespin);
 
         btBack.setOnClickListener(v-> Backctivity());
         SaveText.setOnClickListener(v-> SaveLocation());
@@ -56,6 +60,7 @@ public class AddLocatedActivity extends AppCompatActivity {
         Map<String, Object> locationuser = new HashMap<>();
         locationuser.put("email", user.getEmail());
         locationuser.put("nameLocation", LocationTitle);
+        locationuser.put("TypeLocation", TypeUserLocation.getSelectedItem().toString());
 
         db.collection("userLocated")
                 .add(locationuser)

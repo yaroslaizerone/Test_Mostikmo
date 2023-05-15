@@ -23,4 +23,21 @@
         <item>АльфаБанк</item>
         <item>Тинькофф</item>
     </string-array>
+    <string-array name="TypeLocations">
+        <item>Дети</item>
+        <item>Забота о себе</item>
+        <item>Зарплата</item>
+        <item>Продукты</item>
+        <item>Кафе и рестораны</item>
+        <item>Корректировка</item>
+        <item>Машина</item>
+        <item>Образование</item>
+        <item>СберБанк</item>
+        <item>Отдых и развлечения</item>
+        <item>Платежи и комиссии</item>
+        <item>Подарки</item>
+        <item>Покупки: одежда, техника</item>
+        <item>Проезд</item>
+        <item>Здоровье и фитнес</item>
+    </string-array>
 </resources>
