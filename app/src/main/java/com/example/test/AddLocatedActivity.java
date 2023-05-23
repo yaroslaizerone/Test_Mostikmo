@@ -60,7 +60,7 @@ public class AddLocatedActivity extends AppCompatActivity {
         Map<String, Object> locationuser = new HashMap<>();
         locationuser.put("email", user.getEmail());
         locationuser.put("nameLocation", LocationTitle);
-        locationuser.put("TypeLocation", TypeUserLocation.getSelectedItem().toString());
+        locationuser.put("typeLocation", TypeUserLocation.getSelectedItem().toString());
 
         db.collection("userLocated")
                 .add(locationuser)
