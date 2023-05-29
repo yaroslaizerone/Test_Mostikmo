@@ -104,13 +104,14 @@
             android:orientation="horizontal">
 
             <EditText
+                android:inputType="number"
                 android:id="@+id/CostInput"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:gravity="right"
                 android:hint="0"
-                android:textSize="28dp" />
+                android:textSize="28dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -57,7 +57,7 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_card, container, false);
         context = getContext();
-        rv = (RecyclerView)view.findViewById(R.id.cardRecycleView);
+        rv = view.findViewById(R.id.cardRecycleView);
         llm = new LinearLayoutManager(context);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
@@ -96,7 +96,6 @@ public class CardFragment extends Fragment {
                                         imageBank = R.drawable.tintkoff;
                                         break;
                                 }
-                                Log.i("user",name+"|"+imageBank+"|"+tcard+"|"+tval+"|"+score);
                                 cards.add(new CardModel(name,imageBank,tcard,tval,score));
                             }
                         } else {

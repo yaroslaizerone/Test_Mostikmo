@@ -179,9 +179,8 @@ public class AddOperationActivity extends AppCompatActivity {
         int day = DataOperations.getDayOfMonth();
         int month = DataOperations.getMonth() + 1;
         int year = DataOperations.getYear();
-        String date = day+"."+month+"."+year;
         String Opercomment = coment.getText().toString();
-        String summaoperation = summa.getText().toString();
+        int summaoperation = Integer.parseInt(summa.getText().toString());
         Map<String, Object> userOperation = new HashMap<>();
         userOperation.put("email", user.getEmail());
         userOperation.put("comment", Opercomment);
@@ -190,7 +189,9 @@ public class AddOperationActivity extends AppCompatActivity {
         userOperation.put("typecategoty", TypeCategory);
         userOperation.put("moneyoperation", typeMoney.getSelectedItem().toString());
         userOperation.put("locationoperation", typeLocation.getSelectedItem().toString());
-        userOperation.put("dateoperation", date);
+        userOperation.put("dateoperation", day);
+        userOperation.put("monthoperation", month);
+        userOperation.put("yearoperation", year);
 
         db.collection("userOperation")
                 .add(userOperation)

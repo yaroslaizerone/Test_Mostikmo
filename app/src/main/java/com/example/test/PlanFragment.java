@@ -1,78 +1,251 @@
 package com.example.test;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PlanFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class PlanFragment extends Fragment {
+    private List<DateModel> dates = new ArrayList<DateModel>();
+    private List<PlanModel> plans = new ArrayList<PlanModel>();
+    private List<PlanModel> Selectplans = new ArrayList<PlanModel>();
+    private RecyclerView rv;
+    private int list = 0;
+    View view;
+    LinearLayoutManager llm;
+    Context context;
+    FirebaseFirestore db;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
+    TextView last, next, ListPlan;
+    DateModel plan;
+    PlanModel planUser;
+    String typePlan, today;
+    private Long datePlan, mouthPlan, yearPlan, SummaPlan;
+    int Dohod, Rashod;
+    PieChart pieChart;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PlanFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PlanFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PlanFragment newInstance(String param1, String param2) {
-        PlanFragment fragment = new PlanFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Button Addplan = getView().findViewById(R.id.BtgoAddplan);
-        Addplan.setOnClickListener(v -> StartAddPlan());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plan, container, false);
+        view = inflater.inflate(R.layout.fragment_plan, container, false);
+        context = getContext();
+        rv = (RecyclerView)view.findViewById(R.id.PlanRecycleView);
+        llm = new LinearLayoutManager(context);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+        Rashod = 0;
+        Dohod = 0;
+
+        Button Addplan = view.findViewById(R.id.BtgoAddplan);
+        next = view.findViewById(R.id.listnext);
+        last = view.findViewById(R.id.listback);
+        ListPlan = view.findViewById(R.id.selectedMonth);
+        pieChart = view.findViewById(R.id.piechart);
+
+        last.setOnClickListener(v -> Backlist());
+        next.setOnClickListener(v -> Nextlist());
+        Addplan.setOnClickListener(v -> StartAddPlan());
+
+        return view;
     }
-    void StartAddPlan(){
+
+    private void StartAddPlan(){
         startActivity(new Intent(getActivity(), AddPlansActivity.class));
+    }
+    // Метод для обработки дат
+    private void initializeData(){
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        db.collection("UserPlans")
+                .whereEqualTo("email", user.getEmail()).orderBy("yearplan").orderBy("mouthplan")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                datePlan = document.getLong("dateplan");
+                                mouthPlan = document.getLong("mouthplan");
+                                yearPlan = document.getLong("yearplan");
+                                typePlan = document.getString("typeplan");
+                                SummaPlan = document.getLong("summa");
+                                today = document.getString("today");
+
+                                String dateStart = datePlan+"."+mouthPlan+"."+yearPlan;
+                                plan = new DateModel(mouthPlan, yearPlan);
+                                planUser = new PlanModel(dateStart,SummaPlan+"",typePlan,today,datePlan,mouthPlan,yearPlan);
+                                plans.add(planUser);
+
+                                if(dates.size()==0){
+                                    dates.add(plan);
+                                }else{
+                                    int y = 0;
+                                    for(int i = 0; i<dates.size(); i++){
+                                        if(dates.get(i).month != plan.month && dates.get(i).year != plan.year){
+                                            y++;
+                                            if (y== dates.size()){
+                                                dates.add(plan);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            Log.d("User", "Error getting documents: ", task.getException());
+                        }
+                        if(dates.size() != 0){
+                            ListPlan.setText(MouthSet(dates.get(0).month)+","+dates.get(0).year);
+                            SetData(Integer.parseInt(String.valueOf(dates.get(0).month)), Integer.parseInt(String.valueOf(dates.get(0).year)));
+                        }
+
+                        PlanAdapter adapter = new PlanAdapter(context, Selectplans);
+                        adapter.notifyDataSetChanged();
+                        rv.setAdapter(adapter);
+                    }
+                });
+    }
+
+    private void SetData(int month, int year){
+
+        Selectplans.clear();
+        pieChart.clearChart();
+        Rashod = 0;
+        Dohod = 0;
+
+        for(int i = 0; i < plans.size();i++){
+            if (month == plans.get(i).month && year == plans.get(i).year){
+                Selectplans.add(plans.get(i));
+            }
+        }
+
+        for(int i = 0; i < Selectplans.size(); i++){
+            switch (Selectplans.get(i).TypePlan){
+                case "Расход":
+                    Rashod += Integer.parseInt(Selectplans.get(i).Summa);
+                    break;
+                case "Доход":
+                    Dohod += Integer.parseInt(Selectplans.get(i).Summa);
+                    break;
+            }
+        }
+
+        initializeAdapter();
+
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Расход",
+                        Rashod,
+                        Color.parseColor("#B22222")));
+
+        pieChart.addPieSlice(
+                new PieModel(
+                        "Доход",
+                        Dohod,
+                        Color.parseColor("#008000")));
+
+        pieChart.startAnimation();
+    }
+
+    private void Backlist(){
+        if(list == 0){
+            return ;
+        }else{
+            list--;
+            ListPlan.setText(MouthSet(dates.get(list).month)+","+dates.get(list).year);
+            SetData(Integer.parseInt(String.valueOf(dates.get(list).month)), Integer.parseInt(String.valueOf(dates.get(list).year)));
+        }
+    }
+
+    private void Nextlist(){
+        if(list >= dates.size()-1){
+            return;
+        }else {
+            list++;
+            ListPlan.setText(MouthSet(dates.get(list).month) + "," + dates.get(list).year);
+            SetData(Integer.parseInt(String.valueOf(dates.get(list).month)), Integer.parseInt(String.valueOf(dates.get(list).year)));
+        }
+    }
+
+    String MouthSet(Long monthGet){
+
+        String selectMonth ="";
+
+        if (monthGet == 1) {
+            selectMonth = "Январь";
+        } else if (monthGet == 2) {
+            selectMonth = "Февраль";
+        } else if (monthGet == 3) {
+            selectMonth = "Март";
+        } else if (monthGet == 4) {
+            selectMonth = "Апрель";
+        } else if (monthGet == 5) {
+            selectMonth = "Май";
+        } else if (monthGet == 6) {
+            selectMonth = "Июнь";
+        } else if (monthGet == 7) {
+            selectMonth = "Июль";
+        } else if (monthGet == 8) {
+            selectMonth ="Август";
+        } else if (monthGet == 9) {
+            selectMonth ="Сентябрь";
+        } else if (monthGet == 10) {
+            selectMonth ="Октябрь";
+        } else if (monthGet == 11) {
+            selectMonth ="Ноябрь";
+        } else if (monthGet == 12) {
+            selectMonth ="Декабрь";}
+        return selectMonth;
+    }
+
+    private void initializeAdapter(){
+        PlanAdapter adapter = new PlanAdapter(context, Selectplans);
+        adapter.notifyDataSetChanged();
+        rv.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dates.clear();
+        plans.clear();
+        initializeData();
+        initializeAdapter();
     }
 }

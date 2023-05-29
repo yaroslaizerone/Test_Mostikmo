@@ -7,7 +7,9 @@
         <LinearLayout
             android:background="@drawable/cardback"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
             <ImageView
                 android:id="@+id/bankImage"
                 android:layout_width="60dp"

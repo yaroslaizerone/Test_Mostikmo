@@ -103,7 +103,8 @@
                 android:layout_marginStart="28dp"
                 android:gravity="right"
                 android:hint="0"
-                android:textSize="28dp" />
+                android:textSize="28dp"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"

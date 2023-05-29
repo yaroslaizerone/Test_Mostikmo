@@ -10,30 +10,173 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".PlanActivity">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:background="#D9D9D9"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="410dp"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Планы"
+                        android:textColor="@color/black"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
         <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="410dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:background="#D9D9D9"
-            android:orientation="vertical"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="56dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="410dp"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Планы"
-                    android:textColor="@color/black"
-                    android:textSize="24dp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/listback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text='←'
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/selectedMonth"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Добавьте планы"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/listnext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='→'
+                android:textSize="25dp" />
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="100dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            tools:context=".MainActivity">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGraph"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <org.eazegraph.lib.charts.PieChart
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/piechart"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:padding="6dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="15dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/legendlist"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical">
+
+                            <View
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/Rashod"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvRasshod"
+                                android:text="Расходы"
+                                android:paddingLeft="10dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="5dp">
+
+                            <View
+                                android:paddingLeft="10dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@color/Doshod"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="Доходы"
+                                android:id="@+id/tvDoshod"
+                                android:paddingLeft="10dp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGraph2"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="230dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/PlanRecycleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/plan_recycle_view" />
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/BtgoAddplan"

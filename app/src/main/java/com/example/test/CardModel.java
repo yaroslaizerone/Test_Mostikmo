@@ -4,10 +4,10 @@ import android.widget.ImageView;
 
 public class CardModel {
     String namemoney;
-    int bankimage;
     String typemoney;
     String valutmoney;
     String scoremoney;
+    int bankimage;
 
     public CardModel(String namemoney, int bankimage, String typemoney, String valutmoney, String scoremoney) {
         this.namemoney = namemoney;

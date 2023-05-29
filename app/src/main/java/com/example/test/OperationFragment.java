@@ -40,7 +40,8 @@ public class OperationFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseUser user;
     FirebaseAuth mAuth;
-    String userNcard, Scoreusr, usercomment, userdate, usercatrgory, usertypeoperation, locationuser;
+    String userNcard, usercomment, userdate, usercatrgory, usertypeoperation, locationuser, userMonth, userYear;
+    Long Scoreuser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,15 +76,17 @@ public class OperationFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                userNcard = document.getString("namemoney");
-                                Scoreusr = document.getString("summa");
+                                userNcard = document.getString("moneyoperation");
+                                Scoreuser = document.getLong("summa");
                                 usercomment = document.getString("comment");
-                                userdate = document.getString("dateoperation");
                                 usercatrgory = document.getString("typecategoty");
                                 usertypeoperation = document.getString("typeoperation");
                                 locationuser = document.getString("locationoperation");
-                                Log.i("user",usercomment+"|"+userdate+"|"+locationuser+"|"+userNcard+"|"+Scoreusr+"|"+usercatrgory+"|"+usertypeoperation);
-                                operations.add(new OperationModel(usercomment,userdate,locationuser,userNcard,Scoreusr,usercatrgory,usertypeoperation));
+                                userdate = String.valueOf(document.getLong("dateoperation"));
+                                userMonth = String.valueOf(document.getLong("monthoperation"));
+                                userYear = String.valueOf(document.getLong("yearoperation"));
+
+                                operations.add(new OperationModel(usercomment,userdate+"."+userMonth+"."+userYear,locationuser,userNcard,Scoreuser+"",usercatrgory,usertypeoperation));
                             }
                         } else {
                             Log.d("User", "Error getting documents: ", task.getException());
