@@ -9,7 +9,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="410dp"
         android:layout_height="60dp"
-        android:background="#D9D9D9"
+        android:background="#F4F4F4"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -96,10 +96,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,12 +115,12 @@
             android:textSize="18dp" />
 
         <Spinner
-            android:entries="@array/Bank"
             android:id="@+id/spinBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginEnd="28dp" />
+            android:layout_marginEnd="28dp"
+            android:entries="@array/Bank" />
     </LinearLayout>
 
     <LinearLayout
@@ -149,4 +150,27 @@
             android:layout_marginStart="28dp"
             android:layout_marginEnd="28dp" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Количество средств:"
+        app:layout_constraintBottom_toTopOf="@+id/scoreEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.428" />
+
+    <EditText
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:id="@+id/scoreEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,6 @@ public class AddLocatedActivity extends AppCompatActivity {
     EditText NameLocation;
     TextView SaveText;
     Spinner TypeUserLocation;
-    String TypeLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +67,7 @@ public class AddLocatedActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(AddLocatedActivity.this, "Локация была успешно добавленна.", Toast.LENGTH_SHORT).show();
+                        NameLocation.setText("");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

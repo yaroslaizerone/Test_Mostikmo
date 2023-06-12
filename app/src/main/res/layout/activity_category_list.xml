@@ -10,6 +10,7 @@
         android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="#F4F4F4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

@@ -18,8 +18,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:orientation="horizontal"
-            android:background="@drawable/cardback">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="240dp"
@@ -51,9 +50,9 @@
 
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp">
+                android:layout_marginLeft="20dp">
                 <TextView
                     android:id="@+id/SummaCategory"
                     android:layout_width="match_parent"
@@ -65,6 +64,15 @@
                     android:layout_gravity="right"
                     android:textColor="@color/black"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="₽"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

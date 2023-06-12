@@ -28,7 +28,7 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseAuth mAuth;
     ImageView btBack;
-    EditText namecard;
+    EditText namecard, ScoreCard;
     TextView SaveText;
     Spinner typeV, typeCard, typeBank;
 
@@ -47,6 +47,7 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
         typeBank = findViewById(R.id.spinBank);
         typeV = findViewById(R.id.spinValut);
         typeCard = findViewById(R.id.typespin);
+        ScoreCard = findViewById(R.id.scoreEdit);
 
         btBack.setOnClickListener(v-> Backctivity());
         SaveText.setOnClickListener(v-> SaveLocation());
@@ -60,7 +61,7 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
         userMoneySave.put("typecard", typeCard.getSelectedItem().toString());
         userMoneySave.put("typevalut", typeV.getSelectedItem().toString());
         userMoneySave.put("typebank", typeBank.getSelectedItem().toString());
-        userMoneySave.put("scoremoney", "0");
+        userMoneySave.put("scoremoney",ScoreCard.getText().toString());
 
         db.collection("userScore")
                 .add(userMoneySave)
@@ -68,6 +69,7 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(AddNewMoneyCardActivity.this, "Счёт был успешно добавленн.", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

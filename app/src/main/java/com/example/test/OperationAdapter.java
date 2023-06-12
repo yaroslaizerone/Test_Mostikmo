@@ -1,6 +1,8 @@
 package com.example.test;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -57,6 +60,15 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.MyVi
         personViewHolder.usercomment.setText(operations.get(i).comment);
         personViewHolder.locationuser.setText(operations.get(i).location);
         personViewHolder.usertypeoperation.setText(operations.get(i).typeOperation);
+        Log.i("Info",operations.get(i).typeOperation);
+        if (operations.get(i).typeOperation.equals("+")){
+            personViewHolder.usertypeoperation.setTextColor(Color.parseColor("#008000"));
+            personViewHolder.Scoreusr.setTextColor(Color.parseColor("#008000"));
+        }
+        else if (operations.get(i).typeOperation.equals("-")){
+            personViewHolder.usertypeoperation.setTextColor(Color.parseColor("#B22222"));
+            personViewHolder.Scoreusr.setTextColor(Color.parseColor("#B22222"));
+        }
     }
 
     @Override

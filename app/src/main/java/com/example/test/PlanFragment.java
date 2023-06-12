@@ -104,9 +104,17 @@ public class PlanFragment extends Fragment {
                                 datePlan = document.getLong("dateplan");
                                 mouthPlan = document.getLong("mouthplan");
                                 yearPlan = document.getLong("yearplan");
-                                typePlan = document.getString("typeplan");
                                 SummaPlan = document.getLong("summa");
                                 today = document.getString("today");
+
+                                switch (document.getString("typeplan")){
+                                    case "Расход":
+                                        typePlan = "-";
+                                        break;
+                                    case "Доход":
+                                        typePlan = "+";
+                                        break;
+                                }
 
                                 String dateStart = datePlan+"."+mouthPlan+"."+yearPlan;
                                 plan = new DateModel(mouthPlan, yearPlan);
@@ -157,10 +165,10 @@ public class PlanFragment extends Fragment {
 
         for(int i = 0; i < Selectplans.size(); i++){
             switch (Selectplans.get(i).TypePlan){
-                case "Расход":
+                case "-":
                     Rashod += Integer.parseInt(Selectplans.get(i).Summa);
                     break;
-                case "Доход":
+                case "+":
                     Dohod += Integer.parseInt(Selectplans.get(i).Summa);
                     break;
             }

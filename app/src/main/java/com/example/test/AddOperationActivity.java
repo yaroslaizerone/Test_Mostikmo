@@ -125,12 +125,6 @@ public class AddOperationActivity extends AppCompatActivity {
             case R.id.Dohod:
                 TypeOper = "Доход";
                 break;
-            case R.id.Perevod:
-                TypeOper = "Перевод";
-                break;
-            case R.id.Dolg:
-                TypeOper = "Долг";
-                break;
         }
         switch(TypeCategoryGroup.getCheckedRadioButtonId()){
             case R.id.r1:
@@ -199,6 +193,7 @@ public class AddOperationActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(AddOperationActivity.this, "Операция была успешно добавленна.", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

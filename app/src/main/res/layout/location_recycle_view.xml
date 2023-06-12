@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,14 +19,26 @@
             android:gravity="center"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/usernameLocation"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Название"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Название: "
+                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/usernameLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Название"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,6 +52,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="center"/>
                 <TextView
+                    android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     android:id="@+id/userTypeLocation"
                     android:layout_width="wrap_content"

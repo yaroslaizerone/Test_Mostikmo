@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="410dp"
-            android:layout_height="91dp"
+            android:layout_height="45dp"
             android:background="@drawable/roundlayout_menu"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,10 @@
             android:layout_height="60dp"
             android:layout_above="@+id/mapListLayout"
 
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginTop="57dp"
             android:layout_marginBottom="18dp"
-            android:background="#d7f3f7"
+            android:background="#F4F4F4"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -68,7 +70,7 @@
             android:layout_height="60dp"
             android:layout_above="@+id/linearLayoutOUT"
             android:layout_marginBottom="17dp"
-            android:background="#d7f3f7"
+            android:background="#F4F4F4"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -97,7 +99,7 @@
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="336dp"
-            android:background="#d7f3f7"
+            android:background="#F4F4F4"
             android:orientation="horizontal">
 
             <ImageView
@@ -125,7 +127,7 @@
             android:layout_height="60dp"
             android:layout_above="@+id/valutChengeLayout"
             android:layout_marginBottom="18dp"
-            android:background="#d7f3f7"
+            android:background="#F4F4F4"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

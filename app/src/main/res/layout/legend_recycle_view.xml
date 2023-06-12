@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="40dp">
+    android:layout_height="50dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -23,7 +24,8 @@
                  android:id="@+id/ColorLegend"
                  android:layout_width="30dp"
                  android:layout_height="30dp"
-                 android:background="@color/black"/>
+                 android:background="@color/black"
+                 android:layout_gravity="center"/>
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/LegengText"

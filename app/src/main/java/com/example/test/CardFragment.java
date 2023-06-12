@@ -2,12 +2,9 @@ package com.example.test;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,8 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +38,7 @@ public class CardFragment extends Fragment {
     FirebaseAuth mAuth;
     int imageBank = 0;
     String name, score, tcard, tval;
+    TextView AddCard;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,9 +54,10 @@ public class CardFragment extends Fragment {
         llm = new LinearLayoutManager(context);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
+        AddCard = view.findViewById(R.id.AddnewMoney);
+        AddCard.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddNewMoneyCardActivity.class)));
         return view;
     }
-    //TODO сделать ссылку на создание карты
     private void initializeData(){
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -80,7 +74,6 @@ public class CardFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 name = document.getString("namemoney");
                                 score = document.getString("scoremoney");
-                                tval = document.getString("typevalut");
                                 tcard = document.getString("typecard");
                                 switch (document.getString("typebank")){
                                     case "СберБанк":
@@ -94,6 +87,32 @@ public class CardFragment extends Fragment {
                                         break;
                                     case "Тинькофф":
                                         imageBank = R.drawable.tintkoff;
+                                        break;
+                                }
+                                switch (document.getString("typevalut")){
+                                    case "Рубль":
+                                        tval = "₽";
+                                        break;
+                                    case "Доллар":
+                                        tval = "$";
+                                        break;
+                                    case "Фунт стерлингов":
+                                        tval = "£";
+                                        break;
+                                    case "Юань":
+                                        tval = "¥";
+                                        break;
+                                    case "Евро":
+                                        tval = "€";
+                                        break;
+                                    case "Белорусский рубль":
+                                        tval = "Br";
+                                        break;
+                                    case "Швейцарский франк":
+                                        tval = "₣";
+                                        break;
+                                    case "Дирхам":
+                                        tval = "Dh";
                                         break;
                                 }
                                 cards.add(new CardModel(name,imageBank,tcard,tval,score));

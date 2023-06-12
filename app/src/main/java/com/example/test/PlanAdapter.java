@@ -53,6 +53,15 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
         personViewHolder.SummaPlanUser.setText(Userplan.get(i).Summa);
         personViewHolder.StartPlanUser.setText(Userplan.get(i).StartDate);
         personViewHolder.EndPlanUser.setText(Userplan.get(i).Today);
+
+        if (Userplan.get(i).TypePlan.equals("+")){
+            personViewHolder.TypeUserPlan.setTextColor(Color.parseColor("#008000"));
+            personViewHolder.SummaPlanUser.setTextColor(Color.parseColor("#008000"));
+        }
+        else if (Userplan.get(i).TypePlan.equals("-")){
+            personViewHolder.TypeUserPlan.setTextColor(Color.parseColor("#B22222"));
+            personViewHolder.SummaPlanUser.setTextColor(Color.parseColor("#B22222"));
+        }
     }
 
     @Override

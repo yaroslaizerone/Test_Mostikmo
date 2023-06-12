@@ -7,6 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,8 +19,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:orientation="horizontal"
-            android:background="@drawable/cardback">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="240dp"
@@ -35,9 +35,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:text="Дата Конца:"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:text="Дата окончания:"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/StartDate"
@@ -49,26 +48,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Тип плана:"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/typeplanuser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Покупки"
-                        android:textColor="@color/black" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,16 +74,36 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp">
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/typeplanuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="+"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"/>
                 <TextView
                     android:id="@+id/SummaPlan"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="7778"
                     android:gravity="center"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:layout_gravity="right"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="₽"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
                     android:textColor="@color/black"/>
             </LinearLayout>
         </LinearLayout>

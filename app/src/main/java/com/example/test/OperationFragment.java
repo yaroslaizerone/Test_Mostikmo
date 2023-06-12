@@ -86,6 +86,15 @@ public class OperationFragment extends Fragment {
                                 userMonth = String.valueOf(document.getLong("monthoperation"));
                                 userYear = String.valueOf(document.getLong("yearoperation"));
 
+                                switch (document.getString("typeoperation")){
+                                    case "Расход":
+                                        usertypeoperation = "-";
+                                        break;
+                                    case "Доход":
+                                        usertypeoperation = "+";
+                                        break;
+                                }
+
                                 operations.add(new OperationModel(usercomment,userdate+"."+userMonth+"."+userYear,locationuser,userNcard,Scoreuser+"",usercatrgory,usertypeoperation));
                             }
                         } else {
