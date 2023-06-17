@@ -12,6 +12,7 @@ import com.example.test.Fragments.Card.CardFragment;
 import com.example.test.Fragments.MoreModels.MoreFragment;
 import com.example.test.Fragments.Operation.OperationFragment;
 import com.example.test.Fragments.Plan.PlanFragment;
+import com.example.test.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
