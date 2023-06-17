@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Card;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

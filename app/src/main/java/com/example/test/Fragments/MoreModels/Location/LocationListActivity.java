@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels.Location;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +9,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +52,7 @@ public class LocationListActivity extends AppCompatActivity {
 
         Back.setOnClickListener(v -> {finish();});
         IntentLocation.setOnClickListener(v -> {
-            startActivity(new Intent(this,AddLocatedActivity.class));
+            startActivity(new Intent(this, AddLocatedActivity.class));
         });
     }
 

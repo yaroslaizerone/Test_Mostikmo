@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +10,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.test.Fragments.MoreModels.Category.CategoryListActivity;
+import com.example.test.Fragments.MoreModels.Location.LocationListActivity;
+import com.example.test.PinCodeRegister.LoginActivity;
+import com.example.test.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.time.temporal.ValueRange;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,7 +98,7 @@ public class MoreFragment extends Fragment {
     //TODO сделать переходы на активности из дополнительного меню
     void Logout (){
         mAuth.signOut();
-        startActivity(new Intent(getActivity(),LoginActivity.class));
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
     void GoToLocationlist(){
         startActivity(new Intent(getActivity(), LocationListActivity.class));

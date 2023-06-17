@@ -1,13 +1,11 @@
-package com.example.test;
+package com.example.test.PinCodeRegister;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
@@ -21,26 +19,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.test.MainActivity;
+import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.Filter;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.ktx.Firebase;
-import static com.example.test.LoginActivity.j;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import static com.example.test.PinCodeRegister.LoginActivity.j;
+
 import java.util.concurrent.Executor;
 
 public class PinCode extends AppCompatActivity {
@@ -123,7 +114,7 @@ public class PinCode extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(PinCode.this,MainActivity.class));
+                startActivity(new Intent(PinCode.this, MainActivity.class));
                 o++;
                 finish();
             }

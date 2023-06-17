@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels.Category;
 
 public class CategoryModel {
 

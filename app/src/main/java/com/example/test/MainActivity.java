@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.example.test.databinding.ActivityMainBinding;
+import com.example.test.Fragments.Analystic.AnalysisFragment;
+import com.example.test.Fragments.Card.CardFragment;
+import com.example.test.Fragments.MoreModels.MoreFragment;
+import com.example.test.Fragments.Operation.OperationFragment;
+import com.example.test.Fragments.Plan.PlanFragment;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 

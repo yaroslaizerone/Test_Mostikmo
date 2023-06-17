@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Analystic;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +14,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.test.Fragments.MoreModels.Category.CategoryAdapter;
+import com.example.test.Fragments.MoreModels.Category.CategoryModel;
+import com.example.test.Fragments.Plan.AddPlansActivity;
+import com.example.test.LegendAdapter;
+import com.example.test.LegendModel;
+import com.example.test.Plan.DateModel;
+import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

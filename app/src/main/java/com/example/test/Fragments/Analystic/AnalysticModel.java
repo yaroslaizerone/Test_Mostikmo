@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Analystic;
 
 public class AnalysticModel {
     public AnalysticModel(Long date, Long month, Long year, Long summa, String category) {

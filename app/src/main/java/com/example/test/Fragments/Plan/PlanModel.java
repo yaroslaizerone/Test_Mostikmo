@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Plan;
 
 public class PlanModel {
 

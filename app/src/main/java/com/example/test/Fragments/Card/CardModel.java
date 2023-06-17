@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Card;
 
 import android.widget.ImageView;
 

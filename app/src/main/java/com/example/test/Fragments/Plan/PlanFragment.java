@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Plan;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.test.Plan.DateModel;
+import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,6 @@ import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class PlanFragment extends Fragment {
     private List<DateModel> dates = new ArrayList<DateModel>();

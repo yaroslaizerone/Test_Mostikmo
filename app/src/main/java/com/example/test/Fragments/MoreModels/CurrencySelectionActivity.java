@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.test.R;
 
 import java.util.regex.*;
 

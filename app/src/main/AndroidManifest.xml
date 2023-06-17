@@ -15,56 +15,56 @@
         android:theme="@style/Theme.Test"
         tools:targetApi="31">
         <activity
-            android:name=".LocationListActivity"
+            android:name=".Fragments.MoreModels.Location.LocationListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CurrencySelectionActivity"
+            android:name=".Fragments.MoreModels.CurrencySelectionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CategoryListActivity"
+            android:name=".Fragments.MoreModels.Category.CategoryListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddPlansActivity"
+            android:name=".Fragments.Plan.AddPlansActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddOperationActivity"
+            android:name=".Fragments.Operation.AddOperationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddNewMoneyCardActivity"
+            android:name=".Fragments.Card.AddNewMoneyCardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddLocatedActivity"
+            android:name=".Fragments.MoreModels.Location.AddLocatedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PinCode"
+            android:name=".PinCodeRegister.PinCode"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,21 +77,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreatePinCode"
+            android:name=".PinCodeRegister.CreatePinCode"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".PinCodeRegister.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".PinCodeRegister.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

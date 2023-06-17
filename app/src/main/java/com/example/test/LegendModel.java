@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 public class LegendModel {
     int legendColor;
-    String legendName;
+    public String legendName;
 
     public LegendModel(int legendColor, String legendName) {
         this.legendColor = legendColor;

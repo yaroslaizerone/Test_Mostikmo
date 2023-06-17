@@ -1,15 +1,16 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels.Location;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.test.R;
 
 import java.util.List;
 

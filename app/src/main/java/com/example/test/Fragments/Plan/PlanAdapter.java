@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.Fragments.Plan;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.checkerframework.framework.qual.TypeUseLocation;
+import com.example.test.R;
 
 import java.util.List;
 

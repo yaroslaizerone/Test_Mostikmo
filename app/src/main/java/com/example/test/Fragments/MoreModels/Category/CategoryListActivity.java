@@ -1,9 +1,11 @@
-package com.example.test;
+package com.example.test.Fragments.MoreModels.Category;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.example.test.R;
 
 public class CategoryListActivity extends AppCompatActivity {
     ImageView Backbt;

@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.PinCodeRegister;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -13,16 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test.MainActivity;
+import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
@@ -144,7 +142,7 @@ public class CreatePinCode extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             db.collection("pin").document(user.getEmail()).set(pincodeuser);
-                            startActivity(new Intent(CreatePinCode.this,MainActivity.class));
+                            startActivity(new Intent(CreatePinCode.this, MainActivity.class));
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }

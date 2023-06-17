@@ -1,8 +1,8 @@
-package com.example.test;
+package com.example.test.Plan;
 
 public class DateModel {
-    Long month;
-    Long year;
+    public Long month;
+    public Long year;
 
     public DateModel(Long month, Long year) {
         this.month = month;
