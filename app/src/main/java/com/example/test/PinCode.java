@@ -4,8 +4,14 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +41,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 
 public class PinCode extends AppCompatActivity {
 
@@ -46,6 +53,8 @@ public class PinCode extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     int o;
+    BiometricPrompt biometricPrompt;
+    BiometricPrompt.PromptInfo promptInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +87,7 @@ public class PinCode extends AppCompatActivity {
         cheakbt = findViewById(R.id.acceptinput);
 
         clearbt.setOnClickListener(v->clearsumbolpincode());
-        cheakbt.setOnClickListener(v->Cheakpincode());
+        cheakbt.setOnClickListener(v->BionetricInput());
 
         num1.setOnClickListener(v-> inputpincode("1"));
         num2.setOnClickListener(v-> inputpincode("2"));
@@ -92,6 +101,43 @@ public class PinCode extends AppCompatActivity {
         num0.setOnClickListener(v-> inputpincode("0"));
         respin.setOnClickListener(v-> Resetpincode());
         backLog.setOnClickListener(v -> BackToLogin());
+
+        BiometricManager biometricManager = BiometricManager.from(this);
+        switch (biometricManager.canAuthenticate())
+        {
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                break;
+        }
+        Executor executor = ContextCompat.getMainExecutor(this);
+        biometricPrompt = new BiometricPrompt(PinCode.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(PinCode.this,MainActivity.class));
+                o++;
+                finish();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle("Приложите палец к сканеру")
+                .setDescription("чтобы разблокировать Mosticsmo").setDeviceCredentialAllowed(true)
+                .build();
+        biometricPrompt.authenticate(promptInfo);
     }
 
     void inputpincode(String num){
@@ -148,6 +194,9 @@ public class PinCode extends AppCompatActivity {
     }
     void Resetpincode(){
         startActivity(new Intent(this, CreatePinCode.class));
+    }
+    void BionetricInput() {
+        biometricPrompt.authenticate(promptInfo);
     }
     void Cheakpincode(){
         CollectionReference pinRef = db.collection("pin");

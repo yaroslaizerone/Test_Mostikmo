@@ -36,6 +36,7 @@ android {
 
 dependencies {
 
+    implementation 'androidx.biometric:biometric:1.0.1'
     implementation 'org.jsoup:jsoup:1.14.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.javafaker:javafaker:1.0.2'
