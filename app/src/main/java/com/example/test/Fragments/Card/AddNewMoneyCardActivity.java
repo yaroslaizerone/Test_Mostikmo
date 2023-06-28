@@ -51,9 +51,9 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
         ScoreCard = findViewById(R.id.scoreEdit);
 
         btBack.setOnClickListener(v-> Backctivity());
-        SaveText.setOnClickListener(v-> SaveLocation());
+        SaveText.setOnClickListener(v-> SaveCard());
     }
-    void SaveLocation(){
+    void SaveCard(){
         //TODO Сделать добавление нового счёта, сделать документ с логикой для хранения данных для каждого пользователя
         String nameTitle = namecard.getText().toString();
         Map<String, Object> userMoneySave = new HashMap<>();

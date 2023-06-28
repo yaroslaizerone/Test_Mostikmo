@@ -17,12 +17,14 @@ import java.util.List;
 
 public class AA_Recycle_Viev_Adapter extends RecyclerView.Adapter<AA_Recycle_Viev_Adapter.MyViewHolder> {
     private Context context;
+    private CardRVInterface cardRVInterface;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
+        CardView cv, card;
         ImageView bankView;
         TextView userNcard, scoreusr, usercarddl, uservalt;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            card = itemView.findViewById(R.id.cardView);
             cv = itemView.findViewById(R.id.cardRecycleView);
             scoreusr = itemView.findViewById(R.id.scoremoneyUser);
             usercarddl = itemView.findViewById(R.id.userTypescore);
@@ -33,9 +35,11 @@ public class AA_Recycle_Viev_Adapter extends RecyclerView.Adapter<AA_Recycle_Vie
     }
     List<CardModel> cards;
 
-    public  AA_Recycle_Viev_Adapter (Context context, List<CardModel> cards){
+    public AA_Recycle_Viev_Adapter (Context context, List<CardModel> cards,
+                                    CardRVInterface cardRVInterface){
         this.context = context;
         this.cards = cards;
+        this.cardRVInterface = cardRVInterface;
     }
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -56,11 +60,16 @@ public class AA_Recycle_Viev_Adapter extends RecyclerView.Adapter<AA_Recycle_Vie
         personViewHolder.uservalt.setText(cards.get(i).valutmoney);
         personViewHolder.scoreusr.setText(cards.get(i).scoremoney);
         personViewHolder.bankView.setImageResource(cards.get(i).bankimage);
+        personViewHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardRVInterface.onItemClick(cards.get(i));
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return cards.size();
     }
-
 }

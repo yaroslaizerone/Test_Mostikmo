@@ -113,7 +113,6 @@ public class PinCode extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(PinCode.this, MainActivity.class));
                 o++;
                 finish();

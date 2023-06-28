@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.test.MainActivity;
 import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,9 +29,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardFragment extends Fragment {
+public class CardFragment extends Fragment implements CardRVInterface{
 
     private List<CardModel> cards = new ArrayList<CardModel>();
+    AA_Recycle_Viev_Adapter adapter;
     private RecyclerView rv;
     View view;
     LinearLayoutManager llm;
@@ -121,7 +124,7 @@ public class CardFragment extends Fragment {
                         } else {
                             Log.d("User", "Error getting documents: ", task.getException());
                         }
-                        AA_Recycle_Viev_Adapter adapter = new AA_Recycle_Viev_Adapter(context, cards);
+                        AA_Recycle_Viev_Adapter adapter = new AA_Recycle_Viev_Adapter(context, cards, CardFragment.this);
                         adapter.notifyDataSetChanged();
                         rv.setAdapter(adapter);
                     }
@@ -129,7 +132,7 @@ public class CardFragment extends Fragment {
     }
 
     private void initializeAdapter(){
-        AA_Recycle_Viev_Adapter adapter = new AA_Recycle_Viev_Adapter(context, cards);
+        AA_Recycle_Viev_Adapter adapter = new AA_Recycle_Viev_Adapter(context, cards, CardFragment.this);
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
@@ -139,5 +142,19 @@ public class CardFragment extends Fragment {
         super.onResume();
         initializeData();
         initializeAdapter();
+    }
+    //TODO реализовать переход на другой экран и изменение удаление там реализовать.
+    @Override
+    public void onItemClick(CardModel cardModel) {
+        Toast.makeText(getActivity(), cardModel.bankimage, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), EditCard.class);
+
+        intent.putExtra("NAME",cardModel.namemoney);
+        intent.putExtra("SCORE",cardModel.scoremoney);
+        intent.putExtra("TYPE",cardModel.typemoney);
+        intent.putExtra("VALUT",cardModel.valutmoney);
+        intent.putExtra("BANK",cardModel.bankimage);
+
+        startActivity(intent);
     }
 }
