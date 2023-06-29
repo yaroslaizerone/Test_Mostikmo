@@ -18,12 +18,14 @@ import java.util.List;
 
 public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.MyViewHolder> {
     private Context context;
+    private OperationInterface operationInterface;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
+        CardView cv, card;
         TextView userNcard, Scoreusr, usercomment, userdate, usercatrgory, usertypeoperation, locationuser;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cv = itemView.findViewById(R.id.cardRecycleView);
+            card = itemView.findViewById(R.id.cardView);
+            cv = itemView.findViewById(R.id.OperationRecycleView);
             Scoreusr = itemView.findViewById(R.id.summaOperation);
             userdate = itemView.findViewById(R.id.userdateoperation);
             usercatrgory = itemView.findViewById(R.id.userTypeCategory);
@@ -35,9 +37,10 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.MyVi
     }
     List<OperationModel> operations;
 
-    public OperationAdapter(Context context, List<OperationModel> operations){
+    public OperationAdapter(Context context, List<OperationModel> operations, OperationInterface operationInterface){
         this.context = context;
         this.operations = operations;
+        this.operationInterface = operationInterface;
     }
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -60,6 +63,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.MyVi
         personViewHolder.usercomment.setText(operations.get(i).comment);
         personViewHolder.locationuser.setText(operations.get(i).location);
         personViewHolder.usertypeoperation.setText(operations.get(i).typeOperation);
+
         Log.i("Info",operations.get(i).typeOperation);
         if (operations.get(i).typeOperation.equals("+")){
             personViewHolder.usertypeoperation.setTextColor(Color.parseColor("#008000"));
@@ -69,6 +73,12 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.MyVi
             personViewHolder.usertypeoperation.setTextColor(Color.parseColor("#B22222"));
             personViewHolder.Scoreusr.setTextColor(Color.parseColor("#B22222"));
         }
+        personViewHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operationInterface.onItemClick(operations.get(i));
+            }
+        });
     }
 
     @Override

@@ -17,11 +17,13 @@ import java.util.List;
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> {
     private Context context;
+    private PlanInterface planInterface;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
+        CardView cv, card;
         TextView TypeUserPlan,SummaPlanUser, StartPlanUser, EndPlanUser;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            card = itemView.findViewById(R.id.cardView);
             cv = itemView.findViewById(R.id.PlanRecycleView);
             TypeUserPlan = itemView.findViewById(R.id.typeplanuser);
             SummaPlanUser = itemView.findViewById(R.id.SummaPlan);
@@ -31,9 +33,10 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
     }
     List<PlanModel> Userplan;
 
-    public PlanAdapter(Context context, List<PlanModel> plans){
+    public PlanAdapter(Context context, List<PlanModel> plans, PlanInterface planInterface){
         this.context = context;
         this.Userplan = plans;
+        this.planInterface = planInterface;
     }
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -62,6 +65,12 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
             personViewHolder.TypeUserPlan.setTextColor(Color.parseColor("#B22222"));
             personViewHolder.SummaPlanUser.setTextColor(Color.parseColor("#B22222"));
         }
+        personViewHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               planInterface.onItemClick(Userplan.get(i));
+            }
+        });
     }
 
     @Override

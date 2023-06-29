@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.test.Fragments.MoreModels.Location.EditLocation;
 import com.example.test.Plan.DateModel;
 import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +34,7 @@ import org.eazegraph.lib.models.PieModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanFragment extends Fragment {
+public class PlanFragment extends Fragment implements PlanInterface {
     private List<DateModel> dates = new ArrayList<DateModel>();
     private List<PlanModel> plans = new ArrayList<PlanModel>();
     private List<PlanModel> Selectplans = new ArrayList<PlanModel>();
@@ -143,7 +144,7 @@ public class PlanFragment extends Fragment {
                             SetData(Integer.parseInt(String.valueOf(dates.get(0).month)), Integer.parseInt(String.valueOf(dates.get(0).year)));
                         }
 
-                        PlanAdapter adapter = new PlanAdapter(context, Selectplans);
+                        PlanAdapter adapter = new PlanAdapter(context, Selectplans, PlanFragment.this);
                         adapter.notifyDataSetChanged();
                         rv.setAdapter(adapter);
                     }
@@ -243,7 +244,7 @@ public class PlanFragment extends Fragment {
     }
 
     private void initializeAdapter(){
-        PlanAdapter adapter = new PlanAdapter(context, Selectplans);
+        PlanAdapter adapter = new PlanAdapter(context, Selectplans, PlanFragment.this);
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
@@ -255,5 +256,20 @@ public class PlanFragment extends Fragment {
         plans.clear();
         initializeData();
         initializeAdapter();
+    }
+
+    @Override
+    public void onItemClick(PlanModel planModel) {
+        Intent intent = new Intent(getActivity(), EditPlan.class);
+
+        intent.putExtra("STARTDATE",planModel.StartDate);
+        intent.putExtra("SUMMA",planModel.Summa);
+        intent.putExtra("TYPEPLAN",planModel.TypePlan);
+        intent.putExtra("TODAY",planModel.Today);
+        intent.putExtra("DATE",planModel.date);
+        intent.putExtra("MOUTH",planModel.month);
+        intent.putExtra("YEAR",planModel.year);
+
+        startActivity(intent);
     }
 }

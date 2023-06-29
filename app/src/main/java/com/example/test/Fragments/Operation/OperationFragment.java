@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.test.Fragments.MoreModels.Location.EditLocation;
 import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperationFragment extends Fragment {
+public class OperationFragment extends Fragment implements OperationInterface {
 
     void StartAddOperation(){
         startActivity(new Intent(getActivity(), AddOperationActivity.class));
@@ -100,7 +101,7 @@ public class OperationFragment extends Fragment {
                         } else {
                             Log.d("User", "Error getting documents: ", task.getException());
                         }
-                        OperationAdapter adapter = new OperationAdapter(context, operations);
+                        OperationAdapter adapter = new OperationAdapter(context, operations,OperationFragment.this);
                         adapter.notifyDataSetChanged();
                         rv.setAdapter(adapter);
                     }
@@ -108,7 +109,7 @@ public class OperationFragment extends Fragment {
     }
 
     private void initializeAdapter(){
-        OperationAdapter adapter = new OperationAdapter(context, operations);
+        OperationAdapter adapter = new OperationAdapter(context, operations, OperationFragment.this);
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
@@ -120,4 +121,18 @@ public class OperationFragment extends Fragment {
         initializeAdapter();
     }
 
+    @Override
+    public void onItemClick(OperationModel operationModel) {
+        Intent intent = new Intent(getActivity(), EditOperationsActivity.class);
+
+        intent.putExtra("COMMENT",operationModel.comment);
+        intent.putExtra("DATE",operationModel.dateoperation);
+        intent.putExtra("LOCATION",operationModel.location);
+        intent.putExtra("NAMEMONEY",operationModel.namemoney);
+        intent.putExtra("SUMMA",operationModel.summa);
+        intent.putExtra("CATEGORY",operationModel.category);
+        intent.putExtra("TYPEOPERATION",operationModel.typeOperation);
+
+        startActivity(intent);
+    }
 }

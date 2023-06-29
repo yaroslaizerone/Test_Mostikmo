@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.test.Fragments.Card.CardModel;
+import com.example.test.Fragments.Card.EditCard;
 import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationListActivity extends AppCompatActivity {
+public class LocationListActivity extends AppCompatActivity implements LocationInterface {
     TextView IntentLocation;
     ImageView Back;
     private List<LocationClass> location = new ArrayList<LocationClass>();
@@ -77,7 +79,7 @@ public class LocationListActivity extends AppCompatActivity {
                         } else {
                             Log.d("User", "Error getting documents: ", task.getException());
                         }
-                        LocationAdapter adapter = new LocationAdapter(context, location);
+                        LocationAdapter adapter = new LocationAdapter(context, location, LocationListActivity.this);
                         adapter.notifyDataSetChanged();
                         rv.setAdapter(adapter);
                     }
@@ -85,7 +87,7 @@ public class LocationListActivity extends AppCompatActivity {
     }
 
     private void initializeAdapter(){
-        LocationAdapter adapter = new LocationAdapter(context, location);
+        LocationAdapter adapter = new LocationAdapter(context, location, LocationListActivity.this);
         adapter.notifyDataSetChanged();
         rv.setAdapter(adapter);
     }
@@ -96,6 +98,14 @@ public class LocationListActivity extends AppCompatActivity {
         initializeData();
         initializeAdapter();
     }
-    //TODO Реализовать удаление локаций
-    //TODO Реализовать отображение Локаций + Разметку сделать)
+
+    @Override
+    public void onItemClick(LocationClass locationClass) {
+        Intent intent = new Intent(this, EditLocation.class);
+
+        intent.putExtra("NAME",locationClass.NameLocation);
+        intent.putExtra("TYPE",locationClass.TypeLocation);
+
+        startActivity(intent);
+    }
 }

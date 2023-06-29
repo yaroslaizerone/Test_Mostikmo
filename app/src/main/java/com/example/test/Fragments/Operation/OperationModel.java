@@ -2,7 +2,6 @@ package com.example.test.Fragments.Operation;
 
 public class OperationModel {
 
-
     String comment;
     String dateoperation;
     String location;
