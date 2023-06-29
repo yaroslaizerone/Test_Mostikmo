@@ -1,31 +1,40 @@
 package com.example.test.Fragments.Card;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class EditCard extends AppCompatActivity {
 
     private int typeNum = 0;
     private int valutNum = 0;
     private int bankNum = 0;
-    private int sber = R.drawable.sber;
-    private int alfa = R.drawable.alfa;
-    private int tin = R.drawable.tintkoff;
-    private int vtb = R.drawable.vtb;
-    TextView nameCard, scorevalut;
+    TextView nameCard, scorevalut, updateRecord, deleteRecord;
     Spinner typeCard, valutCard, bankCard;
     ImageView back;
+    FirebaseFirestore db;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +51,16 @@ public class EditCard extends AppCompatActivity {
 
         nameCard = findViewById(R.id.Inputnamecard);
         scorevalut = findViewById(R.id.scoreEdit);
+        updateRecord = findViewById(R.id.savecl);
+        deleteRecord = findViewById(R.id.savecl2);
 
         typeCard = findViewById(R.id.typespin);
         valutCard = findViewById(R.id.spinValut);
         bankCard = findViewById(R.id.spinBank);
 
-
-
         nameCard.setText(i.getStringExtra("NAME"));
         scorevalut.setText(i.getStringExtra("SCORE"));
 
-        Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, valut, Toast.LENGTH_SHORT).show();
         switch(type){
             case "Карта":
                 typeNum = 0;
@@ -110,5 +117,58 @@ public class EditCard extends AppCompatActivity {
         typeCard.setSelection(typeNum);
         valutCard.setSelection(valutNum);
         bankCard.setSelection(bankNum);
+
+        updateRecord.setOnClickListener(v -> UpdateRecord(i.getStringExtra("NAME")));
+        deleteRecord.setOnClickListener(v -> DeleteRecord(i.getStringExtra("NAME")));
+    }
+    private void UpdateRecord(String name){
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        CollectionReference itemsRef = db.collection("userScore");
+        Query docRef = itemsRef.whereEqualTo("email", user.getEmail()).whereEqualTo("namemoney", name);
+        //Обновление записи
+        docRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
+                        itemsRef.document(document.getId()).update(
+                                "namemoney",String.valueOf(nameCard.getText()),
+                                "scoremoney",String.valueOf(scorevalut.getText()) ,
+                                "typebank", bankCard.getSelectedItem().toString(),
+                                "typecard",typeCard.getSelectedItem().toString(),
+                                "typevalut",valutCard.getSelectedItem().toString()
+                        );
+                        Toast.makeText(EditCard.this, "Запись обновлена!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                } else {
+                    Log.d("BAN", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+    private void DeleteRecord(String name){
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        CollectionReference itemsRef = db.collection("userScore");
+        Query docRef = itemsRef.whereEqualTo("email", user.getEmail()).whereEqualTo("namemoney", name);
+        //Удаление записи
+        docRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
+                        itemsRef.document(document.getId()).delete();
+                        Toast.makeText(EditCard.this, "Запись удалена!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                } else {
+                    Log.d("BAN", "Error getting documents: ", task.getException());
+                }
+            }
+        });
     }
 }

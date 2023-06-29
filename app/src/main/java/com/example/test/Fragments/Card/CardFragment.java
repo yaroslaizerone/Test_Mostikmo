@@ -146,7 +146,6 @@ public class CardFragment extends Fragment implements CardRVInterface{
     //TODO реализовать переход на другой экран и изменение удаление там реализовать.
     @Override
     public void onItemClick(CardModel cardModel) {
-        Toast.makeText(getActivity(), cardModel.bankimage, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), EditCard.class);
 
         intent.putExtra("NAME",cardModel.namemoney);
