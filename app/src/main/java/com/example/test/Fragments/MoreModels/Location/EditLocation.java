@@ -111,6 +111,7 @@ public class EditLocation extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+
                     for (DocumentSnapshot document : task.getResult()) {
                         itemsRef.document(document.getId()).update(
                                 "nameLocation",String.valueOf(nameLocation.getText()),

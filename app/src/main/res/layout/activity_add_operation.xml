@@ -206,7 +206,7 @@
                 android:button="@color/black"
                 android:elevation="4dp"
                 android:padding="10dp"
-                android:text="Отдых и развлечения"
+                android:text="Банк"
                 android:textColor="@drawable/radio_text_color" />
 
             <RadioButton
@@ -217,7 +217,7 @@
                 android:button="@color/black"
                 android:elevation="4dp"
                 android:padding="10dp"
-                android:text="Платежи и комиссии"
+                android:text="Отдых и развлечения"
                 android:textColor="@drawable/radio_text_color" />
 
             <RadioButton
@@ -228,7 +228,7 @@
                 android:button="@color/black"
                 android:elevation="4dp"
                 android:padding="10dp"
-                android:text="Подарки"
+                android:text="Платежи и комиссии"
                 android:textColor="@drawable/radio_text_color" />
 
             <RadioButton
@@ -239,7 +239,7 @@
                 android:button="@color/black"
                 android:elevation="4dp"
                 android:padding="10dp"
-                android:text="Покупки: одежда, техника"
+                android:text="Подарки"
                 android:textColor="@drawable/radio_text_color" />
 
             <RadioButton
@@ -250,11 +250,22 @@
                 android:button="@color/black"
                 android:elevation="4dp"
                 android:padding="10dp"
-                android:text="Проезд"
+                android:text="Покупки: одежда, техника"
                 android:textColor="@drawable/radio_text_color" />
 
             <RadioButton
                 android:id="@+id/r14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_selector"
+                android:button="@color/black"
+                android:elevation="4dp"
+                android:padding="10dp"
+                android:text="Проезд"
+                android:textColor="@drawable/radio_text_color" />
+
+            <RadioButton
+                android:id="@+id/r15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/radio_selector"

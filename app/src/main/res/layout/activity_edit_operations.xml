@@ -206,7 +206,7 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
             android:button="@color/black"
             android:elevation="4dp"
             android:padding="10dp"
-            android:text="Отдых и развлечения"
+            android:text="Банк"
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
@@ -217,7 +217,7 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
             android:button="@color/black"
             android:elevation="4dp"
             android:padding="10dp"
-            android:text="Платежи и комиссии"
+            android:text="Отдых и развлечения"
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
@@ -228,7 +228,7 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
             android:button="@color/black"
             android:elevation="4dp"
             android:padding="10dp"
-            android:text="Подарки"
+            android:text="Платежи и комиссии"
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
@@ -239,7 +239,7 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
             android:button="@color/black"
             android:elevation="4dp"
             android:padding="10dp"
-            android:text="Покупки: одежда, техника"
+            android:text="Подарки"
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
@@ -250,11 +250,22 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
             android:button="@color/black"
             android:elevation="4dp"
             android:padding="10dp"
-            android:text="Проезд"
+            android:text="Покупки: одежда, техника"
             android:textColor="@drawable/radio_text_color" />
 
         <RadioButton
             android:id="@+id/r14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radio_selector"
+            android:button="@color/black"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:text="Проезд"
+            android:textColor="@drawable/radio_text_color" />
+
+        <RadioButton
+            android:id="@+id/r15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_selector"
@@ -266,125 +277,139 @@ tools:context=".Fragments.Operation.EditOperationsActivity">
     </RadioGroup>
 </HorizontalScrollView>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:orientation="vertical"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-        <ImageView
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/bankbuildingicon"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="287dp" />
+
+            <Spinner
+                android:id="@+id/typeMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/tearoffcalendar"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="287dp" />
+
+            <DatePicker
+                android:id="@+id/datePickerOperation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/location"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="287dp" />
+
+            <Spinner
+                android:id="@+id/typeUserLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/speechbubble"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="287dp" />
+
+            <EditText
+                android:id="@+id/commentUser"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="left"
+                android:hint="Добавьте комментарий"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bankbuildingicon"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="287dp"
-            android:layout_marginStart="60dp"/>
-        <Spinner
-            android:id="@+id/typeMoney"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="28dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/tearoffcalendar"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="287dp"
-            android:layout_marginStart="60dp"/>
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <DatePicker
-            android:id="@+id/datePickerOperation"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"/>
-    </LinearLayout>
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/location"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="287dp"
-            android:layout_marginStart="60dp"/>
-        <Spinner
-            android:id="@+id/typeUserLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="28dp"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/EditBT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/roundbuttonuix"
+                android:text="Изменить" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/speechbubble"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="287dp"
-            android:layout_marginStart="60dp"/>
-        <EditText
-            android:id="@+id/commentUser"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:hint="Добавьте комментарий"
-            android:textSize="18dp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/EditBT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Изменить"
-            android:background="@drawable/roundbuttonuix"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"/>
-        <Button
-            android:id="@+id/DeleteBT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Удалить"
-            android:background="@drawable/roundbuttonuix"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/DeleteBT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/roundbuttonuix"
+                android:text="Удалить" />
+        </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

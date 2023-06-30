@@ -149,21 +149,24 @@ public class AddOperationActivity extends AppCompatActivity {
                 TypeCategory = "Образование";
                 break;
             case R.id.r9:
-                TypeCategory = "Отдых и развлечения";
+                TypeCategory = "Банк";
                 break;
             case R.id.r10:
-                TypeCategory = "Платежи и комиссии";
+                TypeCategory = "Отдых и развлечения";
                 break;
             case R.id.r11:
-                TypeCategory = "Подарки";
+                TypeCategory = "Платежи и комиссии";
                 break;
             case R.id.r12:
-                TypeCategory = "Покупки: одежда, техника";
+                TypeCategory = "Подарки";
                 break;
             case R.id.r13:
-                TypeCategory = "Проезд";
+                TypeCategory = "Покупки: одежда, техника";
                 break;
             case R.id.r14:
+                TypeCategory = "Проезд";
+                break;
+            case R.id.r15:
                 TypeCategory = "Здоровье и фитнес";
                 break;
         }
