@@ -262,7 +262,6 @@ public class PlanFragment extends Fragment implements PlanInterface {
     public void onItemClick(PlanModel planModel) {
         Intent intent = new Intent(getActivity(), EditPlan.class);
 
-        intent.putExtra("STARTDATE",planModel.StartDate);
         intent.putExtra("SUMMA",planModel.Summa);
         intent.putExtra("TYPEPLAN",planModel.TypePlan);
         intent.putExtra("TODAY",planModel.Today);
