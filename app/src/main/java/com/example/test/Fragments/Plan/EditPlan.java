@@ -89,6 +89,9 @@ public class EditPlan extends AppCompatActivity {
         });
     }
     private void UpdateRecord(){
+        if(summaPlan.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();

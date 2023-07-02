@@ -51,6 +51,9 @@ public class AddLocatedActivity extends AppCompatActivity {
     }
     void SaveLocation(){
         //TODO Сделать добавление новой локации,Cделать документ с логикой для хранения данных для каждого пользователя
+        if(NameLocation.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         String LocationTitle = NameLocation.getText().toString();
         Map<String, Object> locationuser = new HashMap<>();
         locationuser.put("email", user.getEmail());

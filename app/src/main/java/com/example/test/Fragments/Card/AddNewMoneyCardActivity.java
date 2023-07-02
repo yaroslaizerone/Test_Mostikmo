@@ -55,6 +55,9 @@ public class AddNewMoneyCardActivity extends AppCompatActivity {
     }
     void SaveCard(){
         //TODO Сделать добавление нового счёта, сделать документ с логикой для хранения данных для каждого пользователя
+        if(ScoreCard.getText().length() == 0 || namecard.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         String nameTitle = namecard.getText().toString();
         Map<String, Object> userMoneySave = new HashMap<>();
         userMoneySave.put("email", user.getEmail());

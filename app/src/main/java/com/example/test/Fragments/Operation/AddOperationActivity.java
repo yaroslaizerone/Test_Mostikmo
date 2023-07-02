@@ -115,6 +115,9 @@ public class AddOperationActivity extends AppCompatActivity {
     }
     //TODO Сделать запись всех локаций, счетов и дт при первой загрузки приложения и испоьзовать его сдесь для создания новой операции
     void SaveOperationUser(){
+        if(summa.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         switch(TypeoperationGroup.getCheckedRadioButtonId()){
             case R.id.Rashod:
                 TypeOper = "Расход";

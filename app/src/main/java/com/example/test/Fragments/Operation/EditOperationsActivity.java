@@ -199,6 +199,9 @@ public class EditOperationsActivity extends AppCompatActivity {
         deletebt.setOnClickListener(v -> DeleteRecord());
     }
     private void UpdateRecord(){
+        if(scorevalut.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();

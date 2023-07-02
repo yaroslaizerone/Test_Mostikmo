@@ -81,6 +81,9 @@ public class AddPlansActivity extends AppCompatActivity {
         finish();
     }
     void addPlan(){
+        if(costIp.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         summa = Long.parseLong(costIp.getText().toString());
         switch(RGroup.getCheckedRadioButtonId()){
             case R.id.Rashod:

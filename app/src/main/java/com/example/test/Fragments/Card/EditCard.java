@@ -122,6 +122,9 @@ public class EditCard extends AppCompatActivity {
         deleteRecord.setOnClickListener(v -> DeleteRecord(i.getStringExtra("NAME")));
     }
     private void UpdateRecord(String name){
+        if(scorevalut.getText().length() == 0 || nameCard.getText().length() == 0){
+            Toast.makeText(this,"Заполните необходимые поля", Toast.LENGTH_SHORT).show();
+        }
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
