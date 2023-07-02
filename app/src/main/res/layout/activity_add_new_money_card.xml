@@ -36,7 +36,7 @@
             android:layout_marginStart="15dp"
             android:text="Сохранить"
             android:layout_gravity="center"
-            android:textColor="#6E6EFF"
+            android:textColor="#2396DF"
             android:textSize="18dp"
             android:layout_marginEnd="10dp"/>
     </LinearLayout>

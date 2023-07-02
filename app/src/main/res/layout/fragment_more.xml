@@ -47,8 +47,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/diversity" />
@@ -76,8 +76,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/dollar_euro_exchange" />
@@ -104,8 +104,8 @@
 
             <ImageView
                 android:id="@+id/im2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/emergency_exit" />
@@ -133,8 +133,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/map_pinpoint" />
